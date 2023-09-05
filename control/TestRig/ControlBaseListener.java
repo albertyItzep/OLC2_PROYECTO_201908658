@@ -760,13 +760,145 @@ public class ControlBaseListener implements ControlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterAsignacion(ControlParser.AsignacionContext ctx) { }
+	@Override public void enterAsignacion_Aumento(ControlParser.Asignacion_AumentoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitAsignacion(ControlParser.AsignacionContext ctx) { }
+	@Override public void exitAsignacion_Aumento(ControlParser.Asignacion_AumentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_Decremento(ControlParser.Asignacion_DecrementoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_Decremento(ControlParser.Asignacion_DecrementoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_ValorGen(ControlParser.Asignacion_ValorGenContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_ValorGen(ControlParser.Asignacion_ValorGenContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_VectorAumento(ControlParser.Asignacion_VectorAumentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_VectorAumento(ControlParser.Asignacion_VectorAumentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_VectorDecremento(ControlParser.Asignacion_VectorDecrementoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_VectorDecremento(ControlParser.Asignacion_VectorDecrementoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_MatrixAumento(ControlParser.Asignacion_MatrixAumentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_MatrixAumento(ControlParser.Asignacion_MatrixAumentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_MatrixDecremento(ControlParser.Asignacion_MatrixDecrementoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_MatrixDecremento(ControlParser.Asignacion_MatrixDecrementoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_VectorGeneral(ControlParser.Asignacion_VectorGeneralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_VectorGeneral(ControlParser.Asignacion_VectorGeneralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_MatrixGeneral(ControlParser.Asignacion_MatrixGeneralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_MatrixGeneral(ControlParser.Asignacion_MatrixGeneralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_LlAtribGeneral(ControlParser.Asignacion_LlAtribGeneralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_LlAtribGeneral(ControlParser.Asignacion_LlAtribGeneralContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_LlAtribAumento(ControlParser.Asignacion_LlAtribAumentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_LlAtribAumento(ControlParser.Asignacion_LlAtribAumentoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterAsignacion_LlAtribDecremento(ControlParser.Asignacion_LlAtribDecrementoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitAsignacion_LlAtribDecremento(ControlParser.Asignacion_LlAtribDecrementoContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

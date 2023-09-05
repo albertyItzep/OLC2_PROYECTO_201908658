@@ -3543,6 +3543,28 @@ public class ControlParser extends Parser {
 	}
 
 	public static class AsignacionContext extends ParserRuleContext {
+		public AsignacionContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_asignacion; }
+	 
+		public AsignacionContext() { }
+		public void copyFrom(AsignacionContext ctx) {
+			super.copyFrom(ctx);
+		}
+	}
+	public static class Asignacion_VectorGeneralContext extends AsignacionContext {
+		public List<TerminalNode> ID() { return getTokens(ControlParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(ControlParser.ID, i);
+		}
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public TerminalNode INT() { return getToken(ControlParser.INT, 0); }
+		public Asignacion_VectorGeneralContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_MatrixGeneralContext extends AsignacionContext {
 		public List<TerminalNode> ID() { return getTokens(ControlParser.ID); }
 		public TerminalNode ID(int i) {
 			return getToken(ControlParser.ID, i);
@@ -3554,13 +3576,105 @@ public class ControlParser extends Parser {
 		public TerminalNode INT(int i) {
 			return getToken(ControlParser.INT, i);
 		}
+		public Asignacion_MatrixGeneralContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_AumentoContext extends AsignacionContext {
+		public TerminalNode ID() { return getToken(ControlParser.ID, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public Asignacion_AumentoContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_VectorAumentoContext extends AsignacionContext {
+		public List<TerminalNode> ID() { return getTokens(ControlParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(ControlParser.ID, i);
+		}
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public TerminalNode INT() { return getToken(ControlParser.INT, 0); }
+		public Asignacion_VectorAumentoContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_MatrixDecrementoContext extends AsignacionContext {
+		public List<TerminalNode> ID() { return getTokens(ControlParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(ControlParser.ID, i);
+		}
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public List<TerminalNode> INT() { return getTokens(ControlParser.INT); }
+		public TerminalNode INT(int i) {
+			return getToken(ControlParser.INT, i);
+		}
+		public Asignacion_MatrixDecrementoContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_MatrixAumentoContext extends AsignacionContext {
+		public List<TerminalNode> ID() { return getTokens(ControlParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(ControlParser.ID, i);
+		}
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public List<TerminalNode> INT() { return getTokens(ControlParser.INT); }
+		public TerminalNode INT(int i) {
+			return getToken(ControlParser.INT, i);
+		}
+		public Asignacion_MatrixAumentoContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_DecrementoContext extends AsignacionContext {
+		public TerminalNode ID() { return getToken(ControlParser.ID, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public Asignacion_DecrementoContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_VectorDecrementoContext extends AsignacionContext {
+		public List<TerminalNode> ID() { return getTokens(ControlParser.ID); }
+		public TerminalNode ID(int i) {
+			return getToken(ControlParser.ID, i);
+		}
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public TerminalNode INT() { return getToken(ControlParser.INT, 0); }
+		public Asignacion_VectorDecrementoContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_LlAtribAumentoContext extends AsignacionContext {
 		public LlamAtributosContext llamAtributos() {
 			return getRuleContext(LlamAtributosContext.class,0);
 		}
-		public AsignacionContext(ParserRuleContext parent, int invokingState) {
-			super(parent, invokingState);
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
 		}
-		@Override public int getRuleIndex() { return RULE_asignacion; }
+		public Asignacion_LlAtribAumentoContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_LlAtribDecrementoContext extends AsignacionContext {
+		public LlamAtributosContext llamAtributos() {
+			return getRuleContext(LlamAtributosContext.class,0);
+		}
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public Asignacion_LlAtribDecrementoContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_ValorGenContext extends AsignacionContext {
+		public TerminalNode ID() { return getToken(ControlParser.ID, 0); }
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public Asignacion_ValorGenContext(AsignacionContext ctx) { copyFrom(ctx); }
+	}
+	public static class Asignacion_LlAtribGeneralContext extends AsignacionContext {
+		public LlamAtributosContext llamAtributos() {
+			return getRuleContext(LlamAtributosContext.class,0);
+		}
+		public ExprContext expr() {
+			return getRuleContext(ExprContext.class,0);
+		}
+		public Asignacion_LlAtribGeneralContext(AsignacionContext ctx) { copyFrom(ctx); }
 	}
 
 	public final AsignacionContext asignacion() throws RecognitionException {
@@ -3572,6 +3686,7 @@ public class ControlParser extends Parser {
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,79,_ctx) ) {
 			case 1:
+				_localctx = new Asignacion_AumentoContext(_localctx);
 				enterOuterAlt(_localctx, 1);
 				{
 				setState(691);
@@ -3583,6 +3698,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 2:
+				_localctx = new Asignacion_DecrementoContext(_localctx);
 				enterOuterAlt(_localctx, 2);
 				{
 				setState(694);
@@ -3594,6 +3710,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 3:
+				_localctx = new Asignacion_ValorGenContext(_localctx);
 				enterOuterAlt(_localctx, 3);
 				{
 				setState(697);
@@ -3605,6 +3722,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 4:
+				_localctx = new Asignacion_VectorAumentoContext(_localctx);
 				enterOuterAlt(_localctx, 4);
 				{
 				setState(700);
@@ -3630,6 +3748,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 5:
+				_localctx = new Asignacion_VectorDecrementoContext(_localctx);
 				enterOuterAlt(_localctx, 5);
 				{
 				setState(706);
@@ -3655,6 +3774,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 6:
+				_localctx = new Asignacion_MatrixAumentoContext(_localctx);
 				enterOuterAlt(_localctx, 6);
 				{
 				setState(712);
@@ -3706,6 +3826,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 7:
+				_localctx = new Asignacion_MatrixDecrementoContext(_localctx);
 				enterOuterAlt(_localctx, 7);
 				{
 				setState(725);
@@ -3757,6 +3878,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 8:
+				_localctx = new Asignacion_VectorGeneralContext(_localctx);
 				enterOuterAlt(_localctx, 8);
 				{
 				setState(738);
@@ -3782,6 +3904,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 9:
+				_localctx = new Asignacion_MatrixGeneralContext(_localctx);
 				enterOuterAlt(_localctx, 9);
 				{
 				setState(744);
@@ -3833,6 +3956,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 10:
+				_localctx = new Asignacion_LlAtribGeneralContext(_localctx);
 				enterOuterAlt(_localctx, 10);
 				{
 				setState(757);
@@ -3844,6 +3968,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 11:
+				_localctx = new Asignacion_LlAtribAumentoContext(_localctx);
 				enterOuterAlt(_localctx, 11);
 				{
 				setState(761);
@@ -3855,6 +3980,7 @@ public class ControlParser extends Parser {
 				}
 				break;
 			case 12:
+				_localctx = new Asignacion_LlAtribDecrementoContext(_localctx);
 				enterOuterAlt(_localctx, 12);
 				{
 				setState(765);

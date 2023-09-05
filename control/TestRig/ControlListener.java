@@ -681,15 +681,149 @@ public interface ControlListener extends ParseTreeListener {
 	 */
 	void exitDec_CTipoValor(ControlParser.Dec_CTipoValorContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#asignacion}.
+	 * Enter a parse tree produced by the {@code Asignacion_Aumento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
 	 * @param ctx the parse tree
 	 */
-	void enterAsignacion(ControlParser.AsignacionContext ctx);
+	void enterAsignacion_Aumento(ControlParser.Asignacion_AumentoContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#asignacion}.
+	 * Exit a parse tree produced by the {@code Asignacion_Aumento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
 	 * @param ctx the parse tree
 	 */
-	void exitAsignacion(ControlParser.AsignacionContext ctx);
+	void exitAsignacion_Aumento(ControlParser.Asignacion_AumentoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_Decremento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_Decremento(ControlParser.Asignacion_DecrementoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_Decremento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_Decremento(ControlParser.Asignacion_DecrementoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_ValorGen}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_ValorGen(ControlParser.Asignacion_ValorGenContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_ValorGen}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_ValorGen(ControlParser.Asignacion_ValorGenContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_VectorAumento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_VectorAumento(ControlParser.Asignacion_VectorAumentoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_VectorAumento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_VectorAumento(ControlParser.Asignacion_VectorAumentoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_VectorDecremento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_VectorDecremento(ControlParser.Asignacion_VectorDecrementoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_VectorDecremento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_VectorDecremento(ControlParser.Asignacion_VectorDecrementoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_MatrixAumento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_MatrixAumento(ControlParser.Asignacion_MatrixAumentoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_MatrixAumento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_MatrixAumento(ControlParser.Asignacion_MatrixAumentoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_MatrixDecremento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_MatrixDecremento(ControlParser.Asignacion_MatrixDecrementoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_MatrixDecremento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_MatrixDecremento(ControlParser.Asignacion_MatrixDecrementoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_VectorGeneral}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_VectorGeneral(ControlParser.Asignacion_VectorGeneralContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_VectorGeneral}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_VectorGeneral(ControlParser.Asignacion_VectorGeneralContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_MatrixGeneral}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_MatrixGeneral(ControlParser.Asignacion_MatrixGeneralContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_MatrixGeneral}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_MatrixGeneral(ControlParser.Asignacion_MatrixGeneralContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_LlAtribGeneral}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_LlAtribGeneral(ControlParser.Asignacion_LlAtribGeneralContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_LlAtribGeneral}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_LlAtribGeneral(ControlParser.Asignacion_LlAtribGeneralContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_LlAtribAumento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_LlAtribAumento(ControlParser.Asignacion_LlAtribAumentoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_LlAtribAumento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_LlAtribAumento(ControlParser.Asignacion_LlAtribAumentoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Asignacion_LlAtribDecremento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void enterAsignacion_LlAtribDecremento(ControlParser.Asignacion_LlAtribDecrementoContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Asignacion_LlAtribDecremento}
+	 * labeled alternative in {@link ControlParser#asignacion}.
+	 * @param ctx the parse tree
+	 */
+	void exitAsignacion_LlAtribDecremento(ControlParser.Asignacion_LlAtribDecrementoContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Expr_Decimal}
 	 * labeled alternative in {@link ControlParser#expr}.

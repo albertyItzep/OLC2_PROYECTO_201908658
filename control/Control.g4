@@ -224,18 +224,18 @@ declaracion
     | 'let' ID ':' tipovariable '=' expr    #Dec_CTipoValor
     ;
 asignacion
-    : ID '+=' expr
-    | ID '-=' expr
-    | ID '=' expr
-    | ID '[' (INT|ID) ']' '+=' expr
-    | ID '[' (INT|ID) ']' '-=' expr
-    | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+ '-=' expr
-    | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+ '+=' expr
-    | ID '[' (INT|ID) ']' '=' expr
-    | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+ '=' expr
-    | llamAtributos '=' expr
-    | llamAtributos '+=' expr
-    | llamAtributos '-=' expr
+    : ID '+=' expr                                              #Asignacion_Aumento
+    | ID '-=' expr                                              #Asignacion_Decremento
+    | ID '=' expr                                               #Asignacion_ValorGen
+    | ID '[' (INT|ID) ']' '+=' expr                             #Asignacion_VectorAumento
+    | ID '[' (INT|ID) ']' '-=' expr                             #Asignacion_VectorDecremento
+    | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+ '-=' expr         #Asignacion_MatrixAumento
+    | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+ '+=' expr         #Asignacion_MatrixDecremento
+    | ID '[' (INT|ID) ']' '=' expr                              #Asignacion_VectorGeneral
+    | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+ '=' expr          #Asignacion_MatrixGeneral
+    | llamAtributos '=' expr                                    #Asignacion_LlAtribGeneral
+    | llamAtributos '+=' expr                                   #Asignacion_LlAtribAumento
+    | llamAtributos '-=' expr                                   #Asignacion_LlAtribDecremento
     ;
 expr
     : '-' expr                                  #Expr_ValNumNeg
