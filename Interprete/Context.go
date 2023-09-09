@@ -59,6 +59,15 @@ func (c *Contexto) AgregarVariable(nombre string, tipo TipoD, tipoCompuesto Tipo
 	}
 	return c.Memoria.CreateSimbolTipo(nombre, tipo, tipoCompuesto, NumPar, ListaPar, Resultado, Resultados, linea, columna)
 }
+
+func (c *Contexto) AgregarVector(constante bool, nombre string, tipo TipoD, tipoVector TipoD, tipoCompuesto TipoCompuesto, NumPar int, ListaPar []Symbol, Resultado *Resultado, Resultados []Resultado, linea int, columna int) (bool, string) {
+	existe := c.Memoria.Exist(nombre)
+	if existe {
+		return false, "Error variable" + nombre + " declarada nuevamente"
+	}
+	return c.Memoria.CreateSimbolVector(constante, nombre, tipo, tipoVector, tipoCompuesto, NumPar, ListaPar, Resultado, Resultados, linea, columna)
+}
+
 func (c *Contexto) AgregarVariableTipo(nombre string, tipo TipoD, tipoCompuesto TipoCompuesto, NumPar int, ListaPar []Symbol, Resultado *Resultado, Resultados []Resultado, linea int, columna int) (bool, string) {
 	existe := c.Memoria.Exist(nombre)
 	if existe {
@@ -93,9 +102,64 @@ func (c *Contexto) ReasignarValorNativo(nombre string, res *Resultado) bool {
 				}
 			}
 			aux_Memoria = aux_Memoria.Anterior
+			if aux_Memoria.Anterior == nil {
+				if aux_Memoria.Exist(nombre) {
+					tmp, statRes := aux_Memoria.SetSymbolNativ(nombre, res)
+					if tmp {
+						return true
+					} else {
+						c.AddError(statRes)
+						return false
+					}
+				}
+			}
 		}
 	}
-	return false
+	tmp, statRes := c.Memoria.SetSymbolNativ(nombre, res)
+	if tmp {
+		return true
+	} else {
+		c.AddError(statRes)
+		return false
+	}
+}
+
+func (c *Contexto) ReasignarValorNativoFor(nombre string, res *Resultado) bool {
+	existe := c.Memoria.Exist(nombre)
+	if !existe {
+		var aux_Memoria = c.Memoria.Anterior
+		for aux_Memoria != nil {
+			existe := aux_Memoria.Exist(nombre)
+			if existe == true {
+				tmp, statRes := aux_Memoria.SetSymbolNativFor(nombre, res)
+				if tmp {
+					return true
+				} else {
+					c.AddError(statRes)
+					return false
+				}
+			}
+			aux_Memoria = aux_Memoria.Anterior
+			if aux_Memoria.Anterior == nil {
+				if aux_Memoria.Exist(nombre) {
+					tmp, statRes := aux_Memoria.SetSymbolNativ(nombre, res)
+					if tmp {
+						return true
+					} else {
+						c.AddError(statRes)
+						return false
+					}
+				}
+			}
+		}
+	}
+	tmp, statRes := c.Memoria.SetSymbolNativFor(nombre, res)
+	if tmp {
+		return true
+	} else {
+		c.AddError(statRes)
+		return false
+	}
 }
 
 func (c *Contexto) GetValorNativo(nombre string) (bool, *Resultado, bool) {
@@ -108,8 +172,72 @@ func (c *Contexto) GetValorNativo(nombre string) (bool, *Resultado, bool) {
 				return aux_Memoria.GetSimbolo(nombre)
 			}
 			aux_Memoria = aux_Memoria.Anterior
+			if aux_Memoria.Anterior == nil {
+				if aux_Memoria.Exist(nombre) {
+					return aux_Memoria.GetSimbolo(nombre)
+				}
+			}
 		}
 		return false, nil, false
 	}
 	return c.Memoria.GetSimbolo(nombre)
+}
+
+func (c *Contexto) GetValorVector(nombre string) (bool, TipoD, []Resultado, bool) {
+	existe := c.Memoria.Exist(nombre)
+	if !existe {
+		var aux_Memoria = c.Memoria.Anterior
+		for aux_Memoria != nil {
+			existe = aux_Memoria.Exist(nombre)
+			if existe == true {
+				return aux_Memoria.GetSimboloVector(nombre)
+			}
+			aux_Memoria = aux_Memoria.Anterior
+			if aux_Memoria.Anterior == nil {
+				if aux_Memoria.Exist(nombre) {
+					return aux_Memoria.GetSimboloVector(nombre)
+				}
+			}
+		}
+		return false, Nil, nil, false
+	}
+	return c.Memoria.GetSimboloVector(nombre)
+}
+
+func (c *Contexto) ReasignarValorVector(nombre string, res []Resultado) bool {
+	existe := c.Memoria.Exist(nombre)
+	if !existe {
+		var aux_Memoria = c.Memoria.Anterior
+		for aux_Memoria != nil {
+			existe := aux_Memoria.Exist(nombre)
+			if existe == true {
+				tmp, statRes := aux_Memoria.SetSymbolVector(nombre, res)
+				if tmp {
+					return true
+				} else {
+					c.AddError(statRes)
+					return false
+				}
+			}
+			aux_Memoria = aux_Memoria.Anterior
+			if aux_Memoria.Anterior == nil {
+				if aux_Memoria.Exist(nombre) {
+					tmp, statRes := aux_Memoria.SetSymbolVector(nombre, res)
+					if tmp {
+						return true
+					} else {
+						c.AddError(statRes)
+						return false
+					}
+				}
+			}
+		}
+	}
+	tmp, statRes := c.Memoria.SetSymbolVector(nombre, res)
+	if tmp {
+		return true
+	} else {
+		c.AddError(statRes)
+		return false
+	}
 }

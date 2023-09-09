@@ -1,19 +1,5 @@
-var hola: String?
-var hes = 15 + 20
-print(hola)
+var vec1: [Int] = [10,20,30,40,50]
+vec1.append(100) //10,20,30,40,50,100
+vec1.remove( at: 0) //[20,30,40,50,100]
+vec1.remove(at: vec1.count - 1) //[20,30,40,50]
 
-let ser = 15
-
-hes += 5
-
-print(hes)
-
-hes += 5
-hes += 5
-hes += 5
-hes += 5
-hes += 5
-hes += 5
-hes -= 5
-hes -= 5
-print(hes)

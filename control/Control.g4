@@ -4,8 +4,7 @@ grammar Control;
 ID      : [a-zA-Z_][a-zA-Z0-9_]*;
 INT     : [0-9]+ ;
 DECIMAL : [0-9]+'.'[0-9]+;
-RANGO   : [0-9]+ '...' [0-9]+;
-STRING  :  '"' ('\\"'|~["])* '"' ;
+STRING  : '"' ('\\"'|~["])* '"';
 WS      :[ \t\r\n] -> skip;
 LINEALCOMENT: '//' ~[\r\n]* -> channel(HIDDEN)  ;
 BlockComment: '/*' .*? '*/' -> skip;
@@ -42,70 +41,66 @@ sentencias
 
 //if
 insIf
-    : 'if' expr '{' block '}' (instElseIf)* (insElse)*
+    : 'if' expr '{' block '}' (instElseIf)* (insElse)?      #InstruccionIf
     ;
 instElseIf
-    : 'else' 'if' expr '{' block '}'
+    : 'else' 'if' expr '{' block '}'                        #InstruccionElseIf
     ;
 insElse
-    : 'else' '{' block '}'
+    : 'else' '{' block '}'                                  #InstruccionElse
     ;
 
 //switch
 insSwitch
-    : 'switch' expr '{' instCase* instDefault? '}';
+    : 'switch' expr '{' instCase* instDefault? '}'         #InstruccionSwitch
+    ;
 
 instCase
-    : 'case' expr ':' block
+    : 'case' expr ':' block                                 #InstruccionCase
     ;
 instDefault
-    : 'default' ':' block
+    : 'default' ':' block                                   #InstruccionDefault
     ;
 
 //while
 instWhile
-    : 'while' expr '{' block '}'
+    : 'while' expr '{' block '}'                            #InstruccionWhile
     ;
 //for
 instFor
-    : 'for' ID 'in' expr '{' block '}'
+    : 'for' ID 'in' expr '{' block '}'                      #InstruccionFor
     ;
 //guard
 instGuard
-    :'guard' expr 'else' '{' block '}'
+    :'guard' expr 'else' '{' block '}'                      #InstruccionGuard
     ;
 //break
 instBreak
-    : 'break'
+    : 'break'                                               #InstruccionBreak                  
     ;
 //continue
 instContinue
-    : 'continue'
+    : 'continue'                                            #InstruccionContinue
     ;
 //return
 instReturn
-    : 'return' 
-    | 'return' expr
+    : 'return'                                              #InstruccionReturnSimple
+    | 'return' expr                                         #InstruccionReturnExpresion
     ;
 //vectores
 decVector
-    : 'var' ID (':' '[' (tipovariable|ID) ']')? '=' defVector
-    | 'let' ID ':' '[' (tipovariable|ID) ']' '=' defVector
+    : 'var' ID (':' '[' (tipovariable|ID) ']')? '=' '[' expresionList* ']' #DecVector_ExpresionLista
+    | 'var' ID (':' '[' (tipovariable|ID) ']')? '=' '[' objectsList ']'    #DecVector_ObjetLista
+    | 'var' ID (':' '[' (tipovariable|ID) ']')? '=' ID                     #DecVector_Id
+    | 'let' ID (':' '[' (tipovariable|ID) ']')? '=' '[' expresionList* ']'    #DecVectorConst_ExpresionLista
+    | 'let' ID (':' '[' (tipovariable|ID) ']')? '='  '[' objectsList ']'      #DecVectorConst_ObjetLista
+    | 'let' ID (':' '[' (tipovariable|ID) ']')? '='  ID                       #DecVectorConst_Id
     ;
 
-//definicion de un vector
-defVector
-    : '[' numList ']'
-    | '[' expresionList ']'
-    | '[' objectsList ']'
-    | '[' ']'
-    | expr
-    ;
 funcsVectoriales
-    : ID '.' 'append' '('(expr | (ID '(' (lDupla)? ')'))')'
-    | ID '.' 'remove' '(''at' ':' expr')'
-    | ID '.' 'removeLast' '(' ')'
-    | ID '.' 'isEmpty' '(' ')'
+    : ID '.' 'append' '('(expr | lDupla)')'             #VectFunc_Append
+    | ID '.' 'remove' '(''at' ':' expr')'               #VectFunc_Remove
+    | ID '.' 'removeLast' '(' ')'                       #VectFunc_RemoveLast
     //| ID '.' ID '('expr')' //cualquier funcion con punto
     ;
 
@@ -131,7 +126,6 @@ listaValoresMat
 listaValoresMat2
     : listaValoresMat2 ',' listaValoresMat
     | listaValoresMat
-    | numList
     | expresionList
     | objectsList
     ;
@@ -153,12 +147,12 @@ listaAtributos
 
 //creacion de structs
 decStruct
-    : ('var'|'let') ID (':'ID)? '=' ID '(' (lDupla)? ')'
+    : ('var'|'let') ID (':'ID)? '=' lDupla
     | ('var'|'let') ID (':'ID)? '=' ID?
     | ('var'|'let') ID (':'ID)? '=' llamadaFuncion
     ;
 lDupla
-    : (','? ID ':' (expr|llamadaFuncion))+
+    : ID '('(','? ID ':' (expr|llamadaFuncion))* ')'
     ;
 
 //llamada atributos dentro de la funcion con self y fuera
@@ -202,18 +196,13 @@ instCasteos
     : tipovariable '(' expr ')'
     ;
 
-numList
-    : numList ',' INT
-    | INT
-    ;
 expresionList
-    : expresionList ',' expr
-    | expr
+    : (expr ','?)               #ListaExpresiones
     ;
 
 objectsList
-    : objectsList ',' ID '(' (lDupla)? ')'
-    | ID '(' (lDupla)? ')'
+    : objectsList ',' lDupla
+    | lDupla
     ;
 
 declaracion
@@ -227,12 +216,12 @@ asignacion
     : ID '+=' expr                                              #Asignacion_Aumento
     | ID '-=' expr                                              #Asignacion_Decremento
     | ID '=' expr                                               #Asignacion_ValorGen
-    | ID '[' (INT|ID) ']' '+=' expr                             #Asignacion_VectorAumento
-    | ID '[' (INT|ID) ']' '-=' expr                             #Asignacion_VectorDecremento
-    | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+ '-=' expr         #Asignacion_MatrixAumento
-    | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+ '+=' expr         #Asignacion_MatrixDecremento
-    | ID '[' (INT|ID) ']' '=' expr                              #Asignacion_VectorGeneral
-    | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+ '=' expr          #Asignacion_MatrixGeneral
+    | ID '[' expr ']' '+=' expr                             #Asignacion_VectorAumento
+    | ID '[' expr ']' '-=' expr                             #Asignacion_VectorDecremento
+    | ID '[' expr ']' ('[' expr ']')+ '-=' expr         #Asignacion_MatrixAumento
+    | ID '[' expr ']' ('[' expr ']')+ '+=' expr         #Asignacion_MatrixDecremento
+    | ID '[' expr ']' '=' expr                              #Asignacion_VectorGeneral
+    | ID '[' expr ']' ('[' expr ']')+ '=' expr          #Asignacion_MatrixGeneral
     | llamAtributos '=' expr                                    #Asignacion_LlAtribGeneral
     | llamAtributos '+=' expr                                   #Asignacion_LlAtribAumento
     | llamAtributos '-=' expr                                   #Asignacion_LlAtribDecremento
@@ -255,9 +244,10 @@ expr
     | 'nil'                                     #Expr_Nil
     | ID                                        #Expr_ID
     | ID '.' 'count'                            #Expr_Conteo
-    | ID '[' (INT|ID) ']'                       #Expr_PosVector        
+    | ID '.' 'isEmpty' '(' ')'                  #Expr_IsEmpty
+    | ID '[' (expr) ']'                       #Expr_PosVector        
     | ID '[' (INT|ID) ']' ('[' (INT|ID) ']')+   #Expr_PosMatrix
-    | RANGO                                     #Expr_InstRango
+    | expr '...' expr                             #Expr_InstRango
     | instCasteos                               #Expr_InstCasteo
     | llamAtributos                             #Expr_LlamAtributos
     ;

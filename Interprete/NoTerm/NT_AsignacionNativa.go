@@ -1,6 +1,8 @@
 package noterm
 
-import interprete "OLC2_PROYECTO_201908658/Interprete"
+import (
+	interprete "OLC2_PROYECTO_201908658/Interprete"
+)
 
 type NT_AsIncremento struct {
 	id  string
@@ -121,5 +123,28 @@ func (ntDecremento *NT_AsDecremento) Interpretar(ctx *interprete.Contexto) *inte
 		ctx.ReasignarValorNativo(ntDecremento.id, tmp)
 		return interprete.NewNil()
 	}
+	return interprete.NewNil()
+}
+
+type NT_AsGeneral struct {
+	id  string
+	exp interprete.AbstrExpr
+}
+
+// Constructor for NT_AsGeneral
+func NewNT_AsGeneral(id string, exp interprete.AbstrExpr) *NT_AsGeneral {
+	o := new(NT_AsGeneral)
+	o.id = id
+	o.exp = exp
+	return o
+}
+
+func (ntGeneral *NT_AsGeneral) Interpretar(ctx *interprete.Contexto) *interprete.Resultado {
+	expr := ntGeneral.exp.Interpretar(ctx)
+
+	if expr.Tipo == interprete.Nil {
+		ctx.AddError("Error Asignacion: No se puede asignar un nil")
+	}
+	ctx.ReasignarValorNativo(ntGeneral.id, expr)
 	return interprete.NewNil()
 }

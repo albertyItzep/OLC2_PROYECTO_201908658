@@ -9,7 +9,11 @@ const (
 	Integer   TipoD = 3
 	Float     TipoD = 4
 	String    TipoD = 5
-	Compuesto TipoD = 6
+	Break     TipoD = 6
+	Continue  TipoD = 7
+	Rango     TipoD = 8
+	Vector    TipoD = 9
+	Compuesto TipoD = 10
 )
 
 func (t TipoD) String() string {
@@ -26,6 +30,12 @@ func (t TipoD) String() string {
 		return "String"
 	case Bool:
 		return "Bool"
+	case Break:
+		return "Break"
+	case Continue:
+		return "Continue"
+	case Rango:
+		return "Rango"
 	case Compuesto:
 		return "Compuesto"
 	default:
@@ -42,7 +52,10 @@ type Resultado struct {
 	ValorB       bool
 	Nil          bool
 	Tipo         TipoD
+	TipoVector   TipoD
 	TipoVariable bool
+	Rango        []int
+	Return       bool
 }
 
 // Constructor for Resultado
@@ -64,6 +77,9 @@ func NewNil() *Resultado {
 		Tipo:         Nil,
 		Nil:          true,
 		TipoVariable: false,
+		TipoVector:   Nil,
+		Rango:        make([]int, 0),
+		Return:       false,
 	}
 }
 
@@ -77,6 +93,9 @@ func NewFloatLiteral(valor float64) *Resultado {
 		Tipo:         Float,
 		Nil:          false,
 		TipoVariable: false,
+		TipoVector:   Nil,
+		Rango:        make([]int, 0),
+		Return:       false,
 	}
 }
 
@@ -88,6 +107,8 @@ func NewIntLiteral(valor int) *Resultado {
 		ValorC:       "",
 		ValorB:       false,
 		Tipo:         Integer,
+		TipoVector:   Nil,
+		Rango:        make([]int, 0),
 		Nil:          false,
 		TipoVariable: false,
 	}
@@ -101,8 +122,11 @@ func NewStringLiteral(valor string) *Resultado {
 		ValorC:       "",
 		ValorB:       false,
 		Tipo:         String,
+		TipoVector:   Nil,
 		Nil:          false,
+		Rango:        make([]int, 0),
 		TipoVariable: false,
+		Return:       false,
 	}
 }
 
@@ -114,8 +138,11 @@ func NewCharLiteral(valor string) *Resultado {
 		ValorC:       valor,
 		ValorB:       false,
 		Tipo:         Character,
+		TipoVector:   Nil,
 		Nil:          false,
+		Rango:        make([]int, 0),
 		TipoVariable: false,
+		Return:       false,
 	}
 }
 
@@ -127,7 +154,74 @@ func NewBoolLiteral(valor bool) *Resultado {
 		ValorC:       "",
 		ValorB:       valor,
 		Tipo:         Bool,
+		TipoVector:   Nil,
 		Nil:          false,
 		TipoVariable: false,
+		Rango:        make([]int, 0),
+		Return:       false,
+	}
+}
+
+func NewBreakLiteral() *Resultado {
+	return &Resultado{
+		Valor:        0,
+		ValorF:       0.0,
+		ValorS:       "",
+		ValorC:       "",
+		ValorB:       true,
+		Tipo:         Break,
+		TipoVector:   Nil,
+		Nil:          false,
+		Rango:        make([]int, 0),
+		TipoVariable: false,
+		Return:       false,
+	}
+}
+
+func NewContinueLiteral() *Resultado {
+	return &Resultado{
+		Valor:        0,
+		ValorF:       0.0,
+		ValorS:       "",
+		ValorC:       "",
+		ValorB:       true,
+		Tipo:         Continue,
+		TipoVector:   Nil,
+		Nil:          false,
+		TipoVariable: false,
+		Rango:        make([]int, 0),
+		Return:       false,
+	}
+}
+
+func NewRangoLiteral() *Resultado {
+	return &Resultado{
+		Valor:        0,
+		ValorF:       0.0,
+		ValorS:       "",
+		ValorC:       "",
+		ValorB:       true,
+		Tipo:         Rango,
+		TipoVector:   Nil,
+		Nil:          false,
+		TipoVariable: false,
+		Rango:        make([]int, 0),
+		Return:       false,
+	}
+}
+
+func NewVectorLiteral(Tipo TipoD) *Resultado {
+	return &Resultado{
+		Valor:        0,
+		ValorF:       0.0,
+		ValorS:       "",
+		ValorC:       "",
+		ValorB:       true,
+		Tipo:         Vector,
+		TipoVector:   Tipo,
+		Nil:          false,
+		TipoVariable: false,
+		Rango:        make([]int, 0),
+		Return:       false,
 	}
 }

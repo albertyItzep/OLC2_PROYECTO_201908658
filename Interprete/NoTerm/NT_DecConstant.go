@@ -2,7 +2,6 @@ package noterm
 
 import (
 	interprete "OLC2_PROYECTO_201908658/Interprete"
-	"fmt"
 )
 
 type NT_DecConstanteExpresion struct {
@@ -26,7 +25,6 @@ func (ntDecConstEx *NT_DecConstanteExpresion) Interpretar(ctx *interprete.Contex
 	var expr = interprete.NewNil()
 	if ntDecConstEx.Expresion != nil {
 		expr = ntDecConstEx.Expresion.Interpretar(ctx)
-		fmt.Println(expr.Tipo)
 		res, resString := ctx.AgregarConstanteExpresion(ntDecConstEx.Id, expr.Tipo, interprete.Nativo, -1, nil, expr, nil, ntDecConstEx.linea, ntDecConstEx.columna)
 		if !res {
 			ctx.AddError(resString)

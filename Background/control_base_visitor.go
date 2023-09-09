@@ -91,63 +91,91 @@ func (v *BaseControlVisitor) VisitSentenciaLLamadaMetodos(ctx *SentenciaLLamadaM
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInsIf(ctx *InsIfContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionIf(ctx *InstruccionIfContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstElseIf(ctx *InstElseIfContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionElseIf(ctx *InstruccionElseIfContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInsElse(ctx *InsElseContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionElse(ctx *InstruccionElseContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInsSwitch(ctx *InsSwitchContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionSwitch(ctx *InstruccionSwitchContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstCase(ctx *InstCaseContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionCase(ctx *InstruccionCaseContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstDefault(ctx *InstDefaultContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionDefault(ctx *InstruccionDefaultContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstWhile(ctx *InstWhileContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionWhile(ctx *InstruccionWhileContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstFor(ctx *InstForContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionFor(ctx *InstruccionForContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstGuard(ctx *InstGuardContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionGuard(ctx *InstruccionGuardContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstBreak(ctx *InstBreakContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionBreak(ctx *InstruccionBreakContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstContinue(ctx *InstContinueContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionContinue(ctx *InstruccionContinueContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstReturn(ctx *InstReturnContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionReturnSimple(ctx *InstruccionReturnSimpleContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitDecVector(ctx *DecVectorContext) interface{} {
+func (v *BaseControlVisitor) VisitInstruccionReturnExpresion(ctx *InstruccionReturnExpresionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitDefVector(ctx *DefVectorContext) interface{} {
+func (v *BaseControlVisitor) VisitDecVector_ExpresionLista(ctx *DecVector_ExpresionListaContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitFuncsVectoriales(ctx *FuncsVectorialesContext) interface{} {
+func (v *BaseControlVisitor) VisitDecVector_ObjetLista(ctx *DecVector_ObjetListaContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseControlVisitor) VisitDecVector_Id(ctx *DecVector_IdContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseControlVisitor) VisitDecVectorConst_ExpresionLista(ctx *DecVectorConst_ExpresionListaContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseControlVisitor) VisitDecVectorConst_ObjetLista(ctx *DecVectorConst_ObjetListaContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseControlVisitor) VisitDecVectorConst_Id(ctx *DecVectorConst_IdContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseControlVisitor) VisitVectFunc_Append(ctx *VectFunc_AppendContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseControlVisitor) VisitVectFunc_Remove(ctx *VectFunc_RemoveContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseControlVisitor) VisitVectFunc_RemoveLast(ctx *VectFunc_RemoveLastContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -223,11 +251,7 @@ func (v *BaseControlVisitor) VisitInstCasteos(ctx *InstCasteosContext) interface
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitNumList(ctx *NumListContext) interface{} {
-	return v.VisitChildren(ctx)
-}
-
-func (v *BaseControlVisitor) VisitExpresionList(ctx *ExpresionListContext) interface{} {
+func (v *BaseControlVisitor) VisitListaExpresiones(ctx *ListaExpresionesContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -364,6 +388,10 @@ func (v *BaseControlVisitor) VisitExpr_ValidaMayQue(ctx *Expr_ValidaMayQueContex
 }
 
 func (v *BaseControlVisitor) VisitExpr_Conteo(ctx *Expr_ConteoContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
+func (v *BaseControlVisitor) VisitExpr_IsEmpty(ctx *Expr_IsEmptyContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

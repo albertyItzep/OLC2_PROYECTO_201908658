@@ -259,145 +259,233 @@ public interface ControlListener extends ParseTreeListener {
 	 */
 	void exitSentenciaLLamadaMetodos(ControlParser.SentenciaLLamadaMetodosContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#insIf}.
+	 * Enter a parse tree produced by the {@code InstruccionIf}
+	 * labeled alternative in {@link ControlParser#insIf}.
 	 * @param ctx the parse tree
 	 */
-	void enterInsIf(ControlParser.InsIfContext ctx);
+	void enterInstruccionIf(ControlParser.InstruccionIfContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#insIf}.
+	 * Exit a parse tree produced by the {@code InstruccionIf}
+	 * labeled alternative in {@link ControlParser#insIf}.
 	 * @param ctx the parse tree
 	 */
-	void exitInsIf(ControlParser.InsIfContext ctx);
+	void exitInstruccionIf(ControlParser.InstruccionIfContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instElseIf}.
+	 * Enter a parse tree produced by the {@code InstruccionElseIf}
+	 * labeled alternative in {@link ControlParser#instElseIf}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstElseIf(ControlParser.InstElseIfContext ctx);
+	void enterInstruccionElseIf(ControlParser.InstruccionElseIfContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instElseIf}.
+	 * Exit a parse tree produced by the {@code InstruccionElseIf}
+	 * labeled alternative in {@link ControlParser#instElseIf}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstElseIf(ControlParser.InstElseIfContext ctx);
+	void exitInstruccionElseIf(ControlParser.InstruccionElseIfContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#insElse}.
+	 * Enter a parse tree produced by the {@code InstruccionElse}
+	 * labeled alternative in {@link ControlParser#insElse}.
 	 * @param ctx the parse tree
 	 */
-	void enterInsElse(ControlParser.InsElseContext ctx);
+	void enterInstruccionElse(ControlParser.InstruccionElseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#insElse}.
+	 * Exit a parse tree produced by the {@code InstruccionElse}
+	 * labeled alternative in {@link ControlParser#insElse}.
 	 * @param ctx the parse tree
 	 */
-	void exitInsElse(ControlParser.InsElseContext ctx);
+	void exitInstruccionElse(ControlParser.InstruccionElseContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#insSwitch}.
+	 * Enter a parse tree produced by the {@code InstruccionSwitch}
+	 * labeled alternative in {@link ControlParser#insSwitch}.
 	 * @param ctx the parse tree
 	 */
-	void enterInsSwitch(ControlParser.InsSwitchContext ctx);
+	void enterInstruccionSwitch(ControlParser.InstruccionSwitchContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#insSwitch}.
+	 * Exit a parse tree produced by the {@code InstruccionSwitch}
+	 * labeled alternative in {@link ControlParser#insSwitch}.
 	 * @param ctx the parse tree
 	 */
-	void exitInsSwitch(ControlParser.InsSwitchContext ctx);
+	void exitInstruccionSwitch(ControlParser.InstruccionSwitchContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instCase}.
+	 * Enter a parse tree produced by the {@code InstruccionCase}
+	 * labeled alternative in {@link ControlParser#instCase}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstCase(ControlParser.InstCaseContext ctx);
+	void enterInstruccionCase(ControlParser.InstruccionCaseContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instCase}.
+	 * Exit a parse tree produced by the {@code InstruccionCase}
+	 * labeled alternative in {@link ControlParser#instCase}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstCase(ControlParser.InstCaseContext ctx);
+	void exitInstruccionCase(ControlParser.InstruccionCaseContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instDefault}.
+	 * Enter a parse tree produced by the {@code InstruccionDefault}
+	 * labeled alternative in {@link ControlParser#instDefault}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstDefault(ControlParser.InstDefaultContext ctx);
+	void enterInstruccionDefault(ControlParser.InstruccionDefaultContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instDefault}.
+	 * Exit a parse tree produced by the {@code InstruccionDefault}
+	 * labeled alternative in {@link ControlParser#instDefault}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstDefault(ControlParser.InstDefaultContext ctx);
+	void exitInstruccionDefault(ControlParser.InstruccionDefaultContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instWhile}.
+	 * Enter a parse tree produced by the {@code InstruccionWhile}
+	 * labeled alternative in {@link ControlParser#instWhile}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstWhile(ControlParser.InstWhileContext ctx);
+	void enterInstruccionWhile(ControlParser.InstruccionWhileContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instWhile}.
+	 * Exit a parse tree produced by the {@code InstruccionWhile}
+	 * labeled alternative in {@link ControlParser#instWhile}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstWhile(ControlParser.InstWhileContext ctx);
+	void exitInstruccionWhile(ControlParser.InstruccionWhileContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instFor}.
+	 * Enter a parse tree produced by the {@code InstruccionFor}
+	 * labeled alternative in {@link ControlParser#instFor}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstFor(ControlParser.InstForContext ctx);
+	void enterInstruccionFor(ControlParser.InstruccionForContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instFor}.
+	 * Exit a parse tree produced by the {@code InstruccionFor}
+	 * labeled alternative in {@link ControlParser#instFor}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstFor(ControlParser.InstForContext ctx);
+	void exitInstruccionFor(ControlParser.InstruccionForContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instGuard}.
+	 * Enter a parse tree produced by the {@code InstruccionGuard}
+	 * labeled alternative in {@link ControlParser#instGuard}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstGuard(ControlParser.InstGuardContext ctx);
+	void enterInstruccionGuard(ControlParser.InstruccionGuardContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instGuard}.
+	 * Exit a parse tree produced by the {@code InstruccionGuard}
+	 * labeled alternative in {@link ControlParser#instGuard}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstGuard(ControlParser.InstGuardContext ctx);
+	void exitInstruccionGuard(ControlParser.InstruccionGuardContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instBreak}.
+	 * Enter a parse tree produced by the {@code InstruccionBreak}
+	 * labeled alternative in {@link ControlParser#instBreak}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstBreak(ControlParser.InstBreakContext ctx);
+	void enterInstruccionBreak(ControlParser.InstruccionBreakContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instBreak}.
+	 * Exit a parse tree produced by the {@code InstruccionBreak}
+	 * labeled alternative in {@link ControlParser#instBreak}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstBreak(ControlParser.InstBreakContext ctx);
+	void exitInstruccionBreak(ControlParser.InstruccionBreakContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instContinue}.
+	 * Enter a parse tree produced by the {@code InstruccionContinue}
+	 * labeled alternative in {@link ControlParser#instContinue}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstContinue(ControlParser.InstContinueContext ctx);
+	void enterInstruccionContinue(ControlParser.InstruccionContinueContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instContinue}.
+	 * Exit a parse tree produced by the {@code InstruccionContinue}
+	 * labeled alternative in {@link ControlParser#instContinue}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstContinue(ControlParser.InstContinueContext ctx);
+	void exitInstruccionContinue(ControlParser.InstruccionContinueContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instReturn}.
+	 * Enter a parse tree produced by the {@code InstruccionReturnSimple}
+	 * labeled alternative in {@link ControlParser#instReturn}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstReturn(ControlParser.InstReturnContext ctx);
+	void enterInstruccionReturnSimple(ControlParser.InstruccionReturnSimpleContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instReturn}.
+	 * Exit a parse tree produced by the {@code InstruccionReturnSimple}
+	 * labeled alternative in {@link ControlParser#instReturn}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstReturn(ControlParser.InstReturnContext ctx);
+	void exitInstruccionReturnSimple(ControlParser.InstruccionReturnSimpleContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#decVector}.
+	 * Enter a parse tree produced by the {@code InstruccionReturnExpresion}
+	 * labeled alternative in {@link ControlParser#instReturn}.
 	 * @param ctx the parse tree
 	 */
-	void enterDecVector(ControlParser.DecVectorContext ctx);
+	void enterInstruccionReturnExpresion(ControlParser.InstruccionReturnExpresionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#decVector}.
+	 * Exit a parse tree produced by the {@code InstruccionReturnExpresion}
+	 * labeled alternative in {@link ControlParser#instReturn}.
 	 * @param ctx the parse tree
 	 */
-	void exitDecVector(ControlParser.DecVectorContext ctx);
+	void exitInstruccionReturnExpresion(ControlParser.InstruccionReturnExpresionContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#defVector}.
+	 * Enter a parse tree produced by the {@code DecVector_ExpresionLista}
+	 * labeled alternative in {@link ControlParser#decVector}.
 	 * @param ctx the parse tree
 	 */
-	void enterDefVector(ControlParser.DefVectorContext ctx);
+	void enterDecVector_ExpresionLista(ControlParser.DecVector_ExpresionListaContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#defVector}.
+	 * Exit a parse tree produced by the {@code DecVector_ExpresionLista}
+	 * labeled alternative in {@link ControlParser#decVector}.
 	 * @param ctx the parse tree
 	 */
-	void exitDefVector(ControlParser.DefVectorContext ctx);
+	void exitDecVector_ExpresionLista(ControlParser.DecVector_ExpresionListaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DecVector_ObjetLista}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecVector_ObjetLista(ControlParser.DecVector_ObjetListaContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DecVector_ObjetLista}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecVector_ObjetLista(ControlParser.DecVector_ObjetListaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DecVector_Id}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecVector_Id(ControlParser.DecVector_IdContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DecVector_Id}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecVector_Id(ControlParser.DecVector_IdContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DecVectorConst_ExpresionLista}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecVectorConst_ExpresionLista(ControlParser.DecVectorConst_ExpresionListaContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DecVectorConst_ExpresionLista}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecVectorConst_ExpresionLista(ControlParser.DecVectorConst_ExpresionListaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DecVectorConst_ObjetLista}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecVectorConst_ObjetLista(ControlParser.DecVectorConst_ObjetListaContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DecVectorConst_ObjetLista}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecVectorConst_ObjetLista(ControlParser.DecVectorConst_ObjetListaContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code DecVectorConst_Id}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecVectorConst_Id(ControlParser.DecVectorConst_IdContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DecVectorConst_Id}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecVectorConst_Id(ControlParser.DecVectorConst_IdContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ControlParser#funcsVectoriales}.
 	 * @param ctx the parse tree
@@ -591,25 +679,17 @@ public interface ControlListener extends ParseTreeListener {
 	 */
 	void exitInstCasteos(ControlParser.InstCasteosContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#numList}.
+	 * Enter a parse tree produced by the {@code ListaExpresiones}
+	 * labeled alternative in {@link ControlParser#expresionList}.
 	 * @param ctx the parse tree
 	 */
-	void enterNumList(ControlParser.NumListContext ctx);
+	void enterListaExpresiones(ControlParser.ListaExpresionesContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#numList}.
+	 * Exit a parse tree produced by the {@code ListaExpresiones}
+	 * labeled alternative in {@link ControlParser#expresionList}.
 	 * @param ctx the parse tree
 	 */
-	void exitNumList(ControlParser.NumListContext ctx);
-	/**
-	 * Enter a parse tree produced by {@link ControlParser#expresionList}.
-	 * @param ctx the parse tree
-	 */
-	void enterExpresionList(ControlParser.ExpresionListContext ctx);
-	/**
-	 * Exit a parse tree produced by {@link ControlParser#expresionList}.
-	 * @param ctx the parse tree
-	 */
-	void exitExpresionList(ControlParser.ExpresionListContext ctx);
+	void exitListaExpresiones(ControlParser.ListaExpresionesContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ControlParser#objectsList}.
 	 * @param ctx the parse tree

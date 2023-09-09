@@ -70,50 +70,71 @@ type ControlVisitor interface {
 	// Visit a parse tree produced by ControlParser#SentenciaLLamadaMetodos.
 	VisitSentenciaLLamadaMetodos(ctx *SentenciaLLamadaMetodosContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#insIf.
-	VisitInsIf(ctx *InsIfContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionIf.
+	VisitInstruccionIf(ctx *InstruccionIfContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instElseIf.
-	VisitInstElseIf(ctx *InstElseIfContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionElseIf.
+	VisitInstruccionElseIf(ctx *InstruccionElseIfContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#insElse.
-	VisitInsElse(ctx *InsElseContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionElse.
+	VisitInstruccionElse(ctx *InstruccionElseContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#insSwitch.
-	VisitInsSwitch(ctx *InsSwitchContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionSwitch.
+	VisitInstruccionSwitch(ctx *InstruccionSwitchContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instCase.
-	VisitInstCase(ctx *InstCaseContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionCase.
+	VisitInstruccionCase(ctx *InstruccionCaseContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instDefault.
-	VisitInstDefault(ctx *InstDefaultContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionDefault.
+	VisitInstruccionDefault(ctx *InstruccionDefaultContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instWhile.
-	VisitInstWhile(ctx *InstWhileContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionWhile.
+	VisitInstruccionWhile(ctx *InstruccionWhileContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instFor.
-	VisitInstFor(ctx *InstForContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionFor.
+	VisitInstruccionFor(ctx *InstruccionForContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instGuard.
-	VisitInstGuard(ctx *InstGuardContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionGuard.
+	VisitInstruccionGuard(ctx *InstruccionGuardContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instBreak.
-	VisitInstBreak(ctx *InstBreakContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionBreak.
+	VisitInstruccionBreak(ctx *InstruccionBreakContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instContinue.
-	VisitInstContinue(ctx *InstContinueContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionContinue.
+	VisitInstruccionContinue(ctx *InstruccionContinueContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instReturn.
-	VisitInstReturn(ctx *InstReturnContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionReturnSimple.
+	VisitInstruccionReturnSimple(ctx *InstruccionReturnSimpleContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#decVector.
-	VisitDecVector(ctx *DecVectorContext) interface{}
+	// Visit a parse tree produced by ControlParser#InstruccionReturnExpresion.
+	VisitInstruccionReturnExpresion(ctx *InstruccionReturnExpresionContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#defVector.
-	VisitDefVector(ctx *DefVectorContext) interface{}
+	// Visit a parse tree produced by ControlParser#DecVector_ExpresionLista.
+	VisitDecVector_ExpresionLista(ctx *DecVector_ExpresionListaContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#funcsVectoriales.
-	VisitFuncsVectoriales(ctx *FuncsVectorialesContext) interface{}
+	// Visit a parse tree produced by ControlParser#DecVector_ObjetLista.
+	VisitDecVector_ObjetLista(ctx *DecVector_ObjetListaContext) interface{}
+
+	// Visit a parse tree produced by ControlParser#DecVector_Id.
+	VisitDecVector_Id(ctx *DecVector_IdContext) interface{}
+
+	// Visit a parse tree produced by ControlParser#DecVectorConst_ExpresionLista.
+	VisitDecVectorConst_ExpresionLista(ctx *DecVectorConst_ExpresionListaContext) interface{}
+
+	// Visit a parse tree produced by ControlParser#DecVectorConst_ObjetLista.
+	VisitDecVectorConst_ObjetLista(ctx *DecVectorConst_ObjetListaContext) interface{}
+
+	// Visit a parse tree produced by ControlParser#DecVectorConst_Id.
+	VisitDecVectorConst_Id(ctx *DecVectorConst_IdContext) interface{}
+
+	// Visit a parse tree produced by ControlParser#VectFunc_Append.
+	VisitVectFunc_Append(ctx *VectFunc_AppendContext) interface{}
+
+	// Visit a parse tree produced by ControlParser#VectFunc_Remove.
+	VisitVectFunc_Remove(ctx *VectFunc_RemoveContext) interface{}
+
+	// Visit a parse tree produced by ControlParser#VectFunc_RemoveLast.
+	VisitVectFunc_RemoveLast(ctx *VectFunc_RemoveLastContext) interface{}
 
 	// Visit a parse tree produced by ControlParser#decMatriz.
 	VisitDecMatriz(ctx *DecMatrizContext) interface{}
@@ -169,11 +190,8 @@ type ControlVisitor interface {
 	// Visit a parse tree produced by ControlParser#instCasteos.
 	VisitInstCasteos(ctx *InstCasteosContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#numList.
-	VisitNumList(ctx *NumListContext) interface{}
-
-	// Visit a parse tree produced by ControlParser#expresionList.
-	VisitExpresionList(ctx *ExpresionListContext) interface{}
+	// Visit a parse tree produced by ControlParser#ListaExpresiones.
+	VisitListaExpresiones(ctx *ListaExpresionesContext) interface{}
 
 	// Visit a parse tree produced by ControlParser#objectsList.
 	VisitObjectsList(ctx *ObjectsListContext) interface{}
@@ -276,6 +294,9 @@ type ControlVisitor interface {
 
 	// Visit a parse tree produced by ControlParser#Expr_Conteo.
 	VisitExpr_Conteo(ctx *Expr_ConteoContext) interface{}
+
+	// Visit a parse tree produced by ControlParser#Expr_IsEmpty.
+	VisitExpr_IsEmpty(ctx *Expr_IsEmptyContext) interface{}
 
 	// Visit a parse tree produced by ControlParser#Expr_OpSumRes.
 	VisitExpr_OpSumRes(ctx *Expr_OpSumResContext) interface{}

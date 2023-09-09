@@ -1,6 +1,8 @@
 package noterm
 
-import interprete "OLC2_PROYECTO_201908658/Interprete"
+import (
+	interprete "OLC2_PROYECTO_201908658/Interprete"
+)
 
 type NT_ExpSum struct {
 	ExpIzquierda interprete.AbstrExpr
@@ -42,7 +44,8 @@ func (ntSuma *NT_ExpSum) Interpretar(ctx *interprete.Contexto) *interprete.Resul
 	case interprete.Integer:
 		return interprete.NewIntLiteral(expIzq.Valor + expDer.Valor)
 	case interprete.String:
-		return interprete.NewStringLiteral(expDer.ValorS + expDer.ValorS)
+		res := expIzq.ValorS + expDer.ValorS
+		return interprete.NewStringLiteral(res)
 	case interprete.Character:
 		ctx.AddError("No se pueden sumar expresiones de tipo Character")
 		return interprete.NewNil()

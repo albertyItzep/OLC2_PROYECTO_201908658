@@ -2,7 +2,6 @@ package noterm
 
 import (
 	interprete "OLC2_PROYECTO_201908658/Interprete"
-	"fmt"
 )
 
 // variables
@@ -85,7 +84,6 @@ func (ntVarExpresion *NT_VariableExpresion) Interpretar(ctx *interprete.Contexto
 	var expr = interprete.NewNil()
 	if ntVarExpresion.Expresion != nil {
 		expr = ntVarExpresion.Expresion.Interpretar(ctx)
-		fmt.Println(expr.Tipo)
 		res, resString := ctx.AgregarVariable(ntVarExpresion.Id, expr.Tipo, interprete.Nativo, -1, nil, expr, nil, ntVarExpresion.linea, ntVarExpresion.columna)
 		if !res {
 			ctx.AddError(resString)

@@ -109,6 +109,7 @@ func (c *Conversor) Ampliar(res *Resultado, tipo TipoD) *Resultado {
 			c.ctx.AddError("No se puede realizar la conversion de character a Float")
 			return NewNil()
 		case Float:
+			return res
 		}
 	}
 	c.ctx.AddError("Conversion ilegal" +

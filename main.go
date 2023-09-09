@@ -36,8 +36,10 @@ func ejecutar(ruta string) {
 	if len(ctx.Errores) > 0 {
 		for _, v := range ctx.Errores {
 			fmt.Println(v)
+			fmt.Println(ctx.Memoria)
 		}
 	} else {
 		fmt.Println(ctx.Consola)
+		fmt.Println(ctx.Memoria)
 	}
 }

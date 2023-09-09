@@ -6,8 +6,7 @@ type TipoCompuesto uint
 const (
 	Nativo TipoCompuesto = 0
 	Struct TipoCompuesto = 1
-	Vector TipoCompuesto = 2
-	Matriz TipoCompuesto = 3
+	Matriz TipoCompuesto = 2
 )
 
 func (t TipoCompuesto) String() string {
@@ -16,8 +15,6 @@ func (t TipoCompuesto) String() string {
 		return "Nativo"
 	case Struct:
 		return "Struct"
-	case Vector:
-		return "Vector"
 	case Matriz:
 		return "Matriz"
 	default:
@@ -29,6 +26,7 @@ type Symbol struct {
 	Constante        bool
 	Nombre           string
 	Tipo             TipoD //tipos nativos
+	TipoVector       TipoD
 	TipoCom          TipoCompuesto
 	NumeroParametros int
 	ListaParametros  []Symbol
@@ -58,6 +56,22 @@ func NewSymbolConst(constante bool, nombre string, tipo TipoD, tipoCompuesto Tip
 		Nombre:           nombre,
 		Tipo:             tipo,
 		TipoCom:          tipoCompuesto,
+		NumeroParametros: NumPar,
+		ListaParametros:  ListaPar,
+		Resultado:        Resultado,
+		Resultados:       Resultados,
+		linea:            linea,
+		columna:          columna,
+	}
+}
+
+func NewSymbolVector(constante bool, nombre string, tipo TipoD, tipoVector TipoD, tipoCompuesto TipoCompuesto, NumPar int, ListaPar []Symbol, Resultado *Resultado, Resultados []Resultado, linea int, columna int) *Symbol {
+	return &Symbol{
+		Constante:        constante,
+		Nombre:           nombre,
+		Tipo:             tipo,
+		TipoCom:          tipoCompuesto,
+		TipoVector:       tipoVector,
 		NumeroParametros: NumPar,
 		ListaParametros:  ListaPar,
 		Resultado:        Resultado,

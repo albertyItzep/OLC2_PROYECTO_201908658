@@ -6,6 +6,7 @@ import (
 	noterm "OLC2_PROYECTO_201908658/Interprete/NoTerm"
 	terminales "OLC2_PROYECTO_201908658/Interprete/Terminales"
 	"fmt"
+	"strings"
 
 	"github.com/antlr4-go/antlr/v4"
 )
@@ -118,14 +119,12 @@ func (v VisitorInterprete) VisitBlockContent(ctx *Background.BlockContentContext
 
 // Visit a parse tree produced by ControlParser#SentenciaDeclaracion.
 func (v VisitorInterprete) VisitSentenciaDeclaracion(ctx *Background.SentenciaDeclaracionContext) interface{} {
-	fmt.Print("10")
 	return ctx.Declaracion().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaDeclaracionVector.
 func (v VisitorInterprete) VisitSentenciaDeclaracionVector(ctx *Background.SentenciaDeclaracionVectorContext) interface{} {
-	fmt.Print("110")
-	panic("not implemented") // TODO: Implement
+	return ctx.DecVector().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaDeclaracionMatrix.
@@ -147,56 +146,47 @@ func (v VisitorInterprete) VisitSentenciaAsignacion(ctx *Background.SentenciaAsi
 
 // Visit a parse tree produced by ControlParser#SentenciaIf.
 func (v VisitorInterprete) VisitSentenciaIf(ctx *Background.SentenciaIfContext) interface{} {
-	fmt.Print("150")
-	panic("not implemented") // TODO: Implement
+	return ctx.InsIf().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaSwitch.
 func (v VisitorInterprete) VisitSentenciaSwitch(ctx *Background.SentenciaSwitchContext) interface{} {
-	fmt.Print("160")
-	panic("not implemented") // TODO: Implement
+	return ctx.InsSwitch().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaWhile.
 func (v VisitorInterprete) VisitSentenciaWhile(ctx *Background.SentenciaWhileContext) interface{} {
-	fmt.Print("170")
-	panic("not implemented") // TODO: Implement
+	return ctx.InstWhile().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaFor.
 func (v VisitorInterprete) VisitSentenciaFor(ctx *Background.SentenciaForContext) interface{} {
-	fmt.Print("180")
-	panic("not implemented") // TODO: Implement
+	return ctx.InstFor().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaGuard.
 func (v VisitorInterprete) VisitSentenciaGuard(ctx *Background.SentenciaGuardContext) interface{} {
-	fmt.Print("190")
-	panic("not implemented") // TODO: Implement
+	return ctx.InstGuard().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaBreak.
 func (v VisitorInterprete) VisitSentenciaBreak(ctx *Background.SentenciaBreakContext) interface{} {
-	fmt.Print("121")
-	panic("not implemented") // TODO: Implement
+	return ctx.InstBreak().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaContinue.
 func (v VisitorInterprete) VisitSentenciaContinue(ctx *Background.SentenciaContinueContext) interface{} {
-	fmt.Print("122")
-	panic("not implemented") // TODO: Implement
+	return ctx.InstContinue().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaReturn.
 func (v VisitorInterprete) VisitSentenciaReturn(ctx *Background.SentenciaReturnContext) interface{} {
-	fmt.Print("123")
-	panic("not implemented") // TODO: Implement
+	return ctx.InstReturn().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaFuncVectoriales.
 func (v VisitorInterprete) VisitSentenciaFuncVectoriales(ctx *Background.SentenciaFuncVectorialesContext) interface{} {
-	fmt.Print("124")
-	panic("not implemented") // TODO: Implement
+	return ctx.FuncsVectoriales().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#SentenciaLLamadaFuncion.
@@ -207,7 +197,6 @@ func (v VisitorInterprete) VisitSentenciaLLamadaFuncion(ctx *Background.Sentenci
 
 // Visit a parse tree produced by ControlParser#SentenciaPrint.
 func (v VisitorInterprete) VisitSentenciaPrint(ctx *Background.SentenciaPrintContext) interface{} {
-	fmt.Println("126")
 	return ctx.InstPrint().Accept(v).(interprete.AbstrExpr)
 }
 
@@ -304,12 +293,6 @@ func (v VisitorInterprete) VisitInstReturn(ctx *Background.InstReturnContext) in
 // Visit a parse tree produced by ControlParser#decVector.
 func (v VisitorInterprete) VisitDecVector(ctx *Background.DecVectorContext) interface{} {
 	fmt.Print("142")
-	panic("not implemented") // TODO: Implement
-}
-
-// Visit a parse tree produced by ControlParser#defVector.
-func (v VisitorInterprete) VisitDefVector(ctx *Background.DefVectorContext) interface{} {
-	fmt.Print("143")
 	panic("not implemented") // TODO: Implement
 }
 
@@ -416,7 +399,6 @@ func (v VisitorInterprete) VisitListaLlamadaParametros(ctx *Background.ListaLlam
 
 // Visit a parse tree produced by ControlParser#IntruccionPrint.
 func (v VisitorInterprete) VisitIntruccionPrint(ctx *Background.IntruccionPrintContext) interface{} {
-	fmt.Println("16")
 	fprint := noterm.NewNT_Print()
 	expresiones := ctx.AllExpr()
 	for _, expr := range expresiones {
@@ -429,12 +411,6 @@ func (v VisitorInterprete) VisitIntruccionPrint(ctx *Background.IntruccionPrintC
 // Visit a parse tree produced by ControlParser#instCasteos.
 func (v VisitorInterprete) VisitInstCasteos(ctx *Background.InstCasteosContext) interface{} {
 	fmt.Print("161")
-	panic("not implemented") // TODO: Implement
-}
-
-// Visit a parse tree produced by ControlParser#numList.
-func (v VisitorInterprete) VisitNumList(ctx *Background.NumListContext) interface{} {
-	fmt.Print("162")
 	panic("not implemented") // TODO: Implement
 }
 
@@ -513,8 +489,7 @@ func (v VisitorInterprete) VisitExpr_LlamAtributos(ctx *Background.Expr_LlamAtri
 
 // Visit a parse tree produced by ControlParser#Expr_Nil.
 func (v VisitorInterprete) VisitExpr_Nil(ctx *Background.Expr_NilContext) interface{} {
-	fmt.Print("172")
-	panic("not implemented") // TODO: Implement
+	return interprete.NewNil()
 }
 
 // Visit a parse tree produced by ControlParser#Expr_PosMatrix.
@@ -525,14 +500,21 @@ func (v VisitorInterprete) VisitExpr_PosMatrix(ctx *Background.Expr_PosMatrixCon
 
 // Visit a parse tree produced by ControlParser#Expr_Boolean.
 func (v VisitorInterprete) VisitExpr_Boolean(ctx *Background.Expr_BooleanContext) interface{} {
-	fmt.Print("174")
-	panic("not implemented") // TODO: Implement
+	return terminales.NewT_Boolean(
+		ctx.GetText(),
+		ctx.GetStart().GetLine(),
+		ctx.GetStart().GetColumn(),
+	)
 }
 
 // Visit a parse tree produced by ControlParser#Expr_InstRango.
 func (v VisitorInterprete) VisitExpr_InstRango(ctx *Background.Expr_InstRangoContext) interface{} {
-	fmt.Print("175")
-	panic("not implemented") // TODO: Implement
+	return terminales.NewT_Rango(
+		ctx.Expr(0).Accept(v).(interprete.AbstrExpr),
+		ctx.Expr(1).Accept(v).(interprete.AbstrExpr),
+		ctx.GetStart().GetLine(),
+		ctx.GetStart().GetColumn(),
+	)
 }
 
 // Visit a parse tree produced by ControlParser#Expr_ValNumNeg.
@@ -577,8 +559,12 @@ func (v VisitorInterprete) VisitExpr_ValidaMayQue(ctx *Background.Expr_ValidaMay
 
 // Visit a parse tree produced by ControlParser#Expr_Conteo.
 func (v VisitorInterprete) VisitExpr_Conteo(ctx *Background.Expr_ConteoContext) interface{} {
-	fmt.Print("181")
-	panic("not implemented") // TODO: Implement
+	nombre := ctx.ID().GetText()
+	funcVectors := noterm.NewNT_FunVectorsN()
+	funcVectors.SetExpre(nil)
+	funcVectors.SetNombre(nombre)
+	funcVectors.SetTipoFunc("count")
+	return funcVectors
 }
 
 // Visit a parse tree produced by ControlParser#Expr_OpSumRes.
@@ -610,7 +596,7 @@ func (v VisitorInterprete) VisitExpr_ParExpre(ctx *Background.Expr_ParExpreConte
 // Visit a parse tree produced by ControlParser#Expr_StringChar.
 func (v VisitorInterprete) VisitExpr_StringChar(ctx *Background.Expr_StringCharContext) interface{} {
 	return terminales.NewT_StringChar(
-		ctx.STRING().GetText(),
+		strings.Trim(ctx.GetText(), "\""),
 		ctx.STRING().GetSymbol().GetLine(),
 		ctx.STRING().GetSymbol().GetColumn(),
 	)
@@ -630,8 +616,9 @@ func (v VisitorInterprete) VisitExpr_ValidaMenQue(ctx *Background.Expr_ValidaMen
 
 // Visit a parse tree produced by ControlParser#Expr_PosVector.
 func (v VisitorInterprete) VisitExpr_PosVector(ctx *Background.Expr_PosVectorContext) interface{} {
-	fmt.Print("185")
-	panic("not implemented") // TODO: Implement
+	nombre := ctx.ID().GetText()
+	expr := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+	return terminales.NewT_IdVector(nombre, expr)
 }
 
 // Visit a parse tree produced by ControlParser#tipovariable.
@@ -658,17 +645,26 @@ func (v VisitorInterprete) VisitAsignacion_Decremento(ctx *Background.Asignacion
 
 // Visit a parse tree produced by ControlParser#Asignacion_ValorGen.
 func (v VisitorInterprete) VisitAsignacion_ValorGen(ctx *Background.Asignacion_ValorGenContext) interface{} {
-	panic("not implemented") // TODO: Implement
+	id := ctx.ID().GetText()
+	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+
+	return noterm.NewNT_AsGeneral(id, exp)
 }
 
 // Visit a parse tree produced by ControlParser#Asignacion_VectorAumento.
 func (v VisitorInterprete) VisitAsignacion_VectorAumento(ctx *Background.Asignacion_VectorAumentoContext) interface{} {
-	panic("not implemented") // TODO: Implement
+	nombre := ctx.ID().GetText()
+	expValor := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
+	expPos := ctx.Expr(0).Accept(v).(interprete.AbstrExpr)
+	return noterm.NewNT_AsigVector(nombre, "+=", expPos, expValor)
 }
 
 // Visit a parse tree produced by ControlParser#Asignacion_VectorDecremento.
 func (v VisitorInterprete) VisitAsignacion_VectorDecremento(ctx *Background.Asignacion_VectorDecrementoContext) interface{} {
-	panic("not implemented") // TODO: Implement
+	nombre := ctx.ID().GetText()
+	expValor := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
+	expPos := ctx.Expr(0).Accept(v).(interprete.AbstrExpr)
+	return noterm.NewNT_AsigVector(nombre, "-=", expPos, expValor)
 }
 
 // Visit a parse tree produced by ControlParser#Asignacion_MatrixAumento.
@@ -683,7 +679,10 @@ func (v VisitorInterprete) VisitAsignacion_MatrixDecremento(ctx *Background.Asig
 
 // Visit a parse tree produced by ControlParser#Asignacion_VectorGeneral.
 func (v VisitorInterprete) VisitAsignacion_VectorGeneral(ctx *Background.Asignacion_VectorGeneralContext) interface{} {
-	panic("not implemented") // TODO: Implement
+	nombre := ctx.ID().GetText()
+	expValor := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
+	expPos := ctx.Expr(0).Accept(v).(interprete.AbstrExpr)
+	return noterm.NewNT_AsigVector(nombre, "==", expPos, expValor)
 }
 
 // Visit a parse tree produced by ControlParser#Asignacion_MatrixGeneral.
@@ -704,4 +703,221 @@ func (v VisitorInterprete) VisitAsignacion_LlAtribAumento(ctx *Background.Asigna
 // Visit a parse tree produced by ControlParser#Asignacion_LlAtribDecremento.
 func (v VisitorInterprete) VisitAsignacion_LlAtribDecremento(ctx *Background.Asignacion_LlAtribDecrementoContext) interface{} {
 	panic("not implemented") // TODO: Implement
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionIf.
+func (v VisitorInterprete) VisitInstruccionIf(ctx *Background.InstruccionIfContext) interface{} {
+	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+	content := ctx.Block().Accept(v).(interprete.AbstrExpr)
+
+	ifsentecia := noterm.NewNT_InstIF(exp, content)
+
+	if ctx.InsElse() != nil {
+		elseSentencia := ctx.InsElse().Accept(v).(interprete.AbstrExpr)
+		ifsentecia.AddElse(elseSentencia)
+	}
+
+	elsifSentencias := ctx.AllInstElseIf()
+	for _, sentencias := range elsifSentencias {
+		nodo := sentencias.Accept(v).(interprete.AbstrExpr)
+		ifsentecia.AddElseIF(nodo)
+	}
+
+	return ifsentecia
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionElseIf.
+func (v VisitorInterprete) VisitInstruccionElseIf(ctx *Background.InstruccionElseIfContext) interface{} {
+	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+	content := ctx.Block().Accept(v).(interprete.AbstrExpr)
+	return noterm.NewNT_InsElseIf(exp, content)
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionElse.
+func (v VisitorInterprete) VisitInstruccionElse(ctx *Background.InstruccionElseContext) interface{} {
+	content := ctx.Block().Accept(v).(interprete.AbstrExpr)
+	return noterm.NewNT_InsElse(content)
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionSwitch.
+func (v VisitorInterprete) VisitInstruccionSwitch(ctx *Background.InstruccionSwitchContext) interface{} {
+	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+	cases := ctx.AllInstCase()
+
+	sentenciaSwitch := noterm.NewNT_InstSwitch(exp)
+
+	if ctx.InstDefault() != nil {
+		sentenciaSwitch.AddDefault(noterm.NewNT_InstDefault(ctx.InstDefault().Accept(v).(interprete.AbstrExpr)))
+	}
+
+	for _, sentencia := range cases {
+		nodo := sentencia.Accept(v).(*noterm.NT_InstCase)
+		sentenciaSwitch.AddCase(*nodo)
+	}
+	return sentenciaSwitch
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionCase.
+func (v VisitorInterprete) VisitInstruccionCase(ctx *Background.InstruccionCaseContext) interface{} {
+	return noterm.NewNT_InstCase(
+		ctx.Expr().Accept(v).(interprete.AbstrExpr),
+		ctx.Block().Accept(v).(interprete.AbstrExpr),
+	)
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionDefault.
+func (v VisitorInterprete) VisitInstruccionDefault(ctx *Background.InstruccionDefaultContext) interface{} {
+	return noterm.NewNT_InstDefault(
+		ctx.Block().Accept(v).(interprete.AbstrExpr),
+	)
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionBreak.
+func (v VisitorInterprete) VisitInstruccionBreak(ctx *Background.InstruccionBreakContext) interface{} {
+	return noterm.NewNT_InstBreak()
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionContinue.
+func (v VisitorInterprete) VisitInstruccionContinue(ctx *Background.InstruccionContinueContext) interface{} {
+	return noterm.NewNT_InstContinue()
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionReturnSimple.
+func (v VisitorInterprete) VisitInstruccionReturnSimple(ctx *Background.InstruccionReturnSimpleContext) interface{} {
+	return noterm.NewNT_InstReturn(nil)
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionReturnExpresion.
+func (v VisitorInterprete) VisitInstruccionReturnExpresion(ctx *Background.InstruccionReturnExpresionContext) interface{} {
+	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+	return noterm.NewNT_InstReturn(exp)
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionWhile.
+func (v VisitorInterprete) VisitInstruccionWhile(ctx *Background.InstruccionWhileContext) interface{} {
+	expr := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+	block := ctx.Block().Accept(v).(interprete.AbstrExpr)
+
+	return noterm.NewNT_InstWhile(expr, block)
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionFor.
+func (v VisitorInterprete) VisitInstruccionFor(ctx *Background.InstruccionForContext) interface{} {
+	id := ctx.ID().GetText()
+	expr := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+	block := ctx.Block().Accept(v).(interprete.AbstrExpr)
+
+	return noterm.NewNT_InsFor(
+		id,
+		expr,
+		block,
+		ctx.GetStart().GetLine(),
+		ctx.GetStart().GetColumn(),
+	)
+}
+
+// Visit a parse tree produced by ControlParser#InstruccionGuard.
+func (v VisitorInterprete) VisitInstruccionGuard(ctx *Background.InstruccionGuardContext) interface{} {
+	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+	block := ctx.Block().Accept(v).(interprete.AbstrExpr)
+	return noterm.NewNT_InstGuard(exp, block)
+}
+
+// Visit a parse tree produced by ControlParser#ListaExpresiones.
+func (v VisitorInterprete) VisitListaExpresiones(ctx *Background.ListaExpresionesContext) interface{} {
+	return ctx.Expr().Accept(v).(interprete.AbstrExpr)
+}
+
+// Visit a parse tree produced by ControlParser#DecVector_ExpresionLista.
+func (v VisitorInterprete) VisitDecVector_ExpresionLista(ctx *Background.DecVector_ExpresionListaContext) interface{} {
+	nombre := ctx.ID(0).GetText()
+	tipoVar := interprete.Nil
+	tipoId := interprete.Nil
+	if ctx.Tipovariable() != nil && ctx.ID(1) == nil {
+		tipoVar = terminales.NewT_TipoVariable(ctx.Tipovariable().GetText()).GetTipoD()
+		tipoId = interprete.Nil
+	} else if ctx.Tipovariable() == nil && ctx.ID(1) != nil {
+		tipoId = terminales.NewT_TipoVariable(ctx.ID(1).GetText()).GetTipoD()
+		tipoVar = interprete.Nil
+	}
+
+	tmp := noterm.NewNT_DecVector(nombre, tipoVar, tipoId, ctx.GetStart().GetLine(), ctx.GetStart().GetColumn())
+
+	sentencias := ctx.AllExpresionList()
+
+	for _, sentencia := range sentencias {
+		tmp1 := sentencia.Accept(v).(interprete.AbstrExpr)
+		tmp.AddExpresion(tmp1)
+	}
+
+	return tmp
+}
+
+// Visit a parse tree produced by ControlParser#DecVector_ObjetLista.
+func (v VisitorInterprete) VisitDecVector_ObjetLista(ctx *Background.DecVector_ObjetListaContext) interface{} {
+	panic("not implemented") // TODO: Implement
+}
+
+// Visit a parse tree produced by ControlParser#DecVector_Id.
+func (v VisitorInterprete) VisitDecVector_Id(ctx *Background.DecVector_IdContext) interface{} {
+	panic("not implemented") // TODO: Implement
+}
+
+// Visit a parse tree produced by ControlParser#DecVectorConst_ExpresionLista.
+func (v VisitorInterprete) VisitDecVectorConst_ExpresionLista(ctx *Background.DecVectorConst_ExpresionListaContext) interface{} {
+	panic("not implemented") // TODO: Implement
+}
+
+// Visit a parse tree produced by ControlParser#DecVectorConst_ObjetLista.
+func (v VisitorInterprete) VisitDecVectorConst_ObjetLista(ctx *Background.DecVectorConst_ObjetListaContext) interface{} {
+	panic("not implemented") // TODO: Implement
+}
+
+// Visit a parse tree produced by ControlParser#DecVectorConst_Id.
+func (v VisitorInterprete) VisitDecVectorConst_Id(ctx *Background.DecVectorConst_IdContext) interface{} {
+	panic("not implemented") // TODO: Implement
+}
+
+// Visit a parse tree produced by ControlParser#VectFunc_Append.
+func (v VisitorInterprete) VisitVectFunc_Append(ctx *Background.VectFunc_AppendContext) interface{} {
+	nombre := ctx.ID().GetText()
+	funcVectors := noterm.NewNT_FunVectorsN()
+	if ctx.Expr() != nil {
+		funcVectors.SetExpre(ctx.Expr().Accept(v).(interprete.AbstrExpr))
+	} else if ctx.LDupla() != nil {
+		funcVectors.SetExpre(ctx.LDupla().Accept(v).(interprete.AbstrExpr))
+	}
+	funcVectors.SetNombre(nombre)
+	funcVectors.SetTipoFunc("append")
+	return funcVectors
+}
+
+// Visit a parse tree produced by ControlParser#VectFunc_Remove.
+func (v VisitorInterprete) VisitVectFunc_Remove(ctx *Background.VectFunc_RemoveContext) interface{} {
+	nombre := ctx.ID().GetText()
+	funcVectors := noterm.NewNT_FunVectorsN()
+	funcVectors.SetExpre(ctx.Expr().Accept(v).(interprete.AbstrExpr))
+	funcVectors.SetNombre(nombre)
+	funcVectors.SetTipoFunc("removeAt")
+	return funcVectors
+}
+
+// Visit a parse tree produced by ControlParser#VectFunc_RemoveLast.
+func (v VisitorInterprete) VisitVectFunc_RemoveLast(ctx *Background.VectFunc_RemoveLastContext) interface{} {
+	nombre := ctx.ID().GetText()
+	funcVectors := noterm.NewNT_FunVectorsN()
+	funcVectors.SetExpre(nil)
+	funcVectors.SetNombre(nombre)
+	funcVectors.SetTipoFunc("removeLast")
+	return funcVectors
+}
+
+// Visit a parse tree produced by ControlParser#Expr_IsEmpty.
+func (v VisitorInterprete) VisitExpr_IsEmpty(ctx *Background.Expr_IsEmptyContext) interface{} {
+	nombre := ctx.ID().GetText()
+	funcVectors := noterm.NewNT_FunVectorsN()
+	funcVectors.SetExpre(nil)
+	funcVectors.SetNombre(nombre)
+	funcVectors.SetTipoFunc("empty")
+	return funcVectors
 }

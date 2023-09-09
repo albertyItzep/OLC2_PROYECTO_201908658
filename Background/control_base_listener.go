@@ -154,95 +154,141 @@ func (s *BaseControlListener) EnterSentenciaLLamadaMetodos(ctx *SentenciaLLamada
 // ExitSentenciaLLamadaMetodos is called when production SentenciaLLamadaMetodos is exited.
 func (s *BaseControlListener) ExitSentenciaLLamadaMetodos(ctx *SentenciaLLamadaMetodosContext) {}
 
-// EnterInsIf is called when production insIf is entered.
-func (s *BaseControlListener) EnterInsIf(ctx *InsIfContext) {}
+// EnterInstruccionIf is called when production InstruccionIf is entered.
+func (s *BaseControlListener) EnterInstruccionIf(ctx *InstruccionIfContext) {}
 
-// ExitInsIf is called when production insIf is exited.
-func (s *BaseControlListener) ExitInsIf(ctx *InsIfContext) {}
+// ExitInstruccionIf is called when production InstruccionIf is exited.
+func (s *BaseControlListener) ExitInstruccionIf(ctx *InstruccionIfContext) {}
 
-// EnterInstElseIf is called when production instElseIf is entered.
-func (s *BaseControlListener) EnterInstElseIf(ctx *InstElseIfContext) {}
+// EnterInstruccionElseIf is called when production InstruccionElseIf is entered.
+func (s *BaseControlListener) EnterInstruccionElseIf(ctx *InstruccionElseIfContext) {}
 
-// ExitInstElseIf is called when production instElseIf is exited.
-func (s *BaseControlListener) ExitInstElseIf(ctx *InstElseIfContext) {}
+// ExitInstruccionElseIf is called when production InstruccionElseIf is exited.
+func (s *BaseControlListener) ExitInstruccionElseIf(ctx *InstruccionElseIfContext) {}
 
-// EnterInsElse is called when production insElse is entered.
-func (s *BaseControlListener) EnterInsElse(ctx *InsElseContext) {}
+// EnterInstruccionElse is called when production InstruccionElse is entered.
+func (s *BaseControlListener) EnterInstruccionElse(ctx *InstruccionElseContext) {}
 
-// ExitInsElse is called when production insElse is exited.
-func (s *BaseControlListener) ExitInsElse(ctx *InsElseContext) {}
+// ExitInstruccionElse is called when production InstruccionElse is exited.
+func (s *BaseControlListener) ExitInstruccionElse(ctx *InstruccionElseContext) {}
 
-// EnterInsSwitch is called when production insSwitch is entered.
-func (s *BaseControlListener) EnterInsSwitch(ctx *InsSwitchContext) {}
+// EnterInstruccionSwitch is called when production InstruccionSwitch is entered.
+func (s *BaseControlListener) EnterInstruccionSwitch(ctx *InstruccionSwitchContext) {}
 
-// ExitInsSwitch is called when production insSwitch is exited.
-func (s *BaseControlListener) ExitInsSwitch(ctx *InsSwitchContext) {}
+// ExitInstruccionSwitch is called when production InstruccionSwitch is exited.
+func (s *BaseControlListener) ExitInstruccionSwitch(ctx *InstruccionSwitchContext) {}
 
-// EnterInstCase is called when production instCase is entered.
-func (s *BaseControlListener) EnterInstCase(ctx *InstCaseContext) {}
+// EnterInstruccionCase is called when production InstruccionCase is entered.
+func (s *BaseControlListener) EnterInstruccionCase(ctx *InstruccionCaseContext) {}
 
-// ExitInstCase is called when production instCase is exited.
-func (s *BaseControlListener) ExitInstCase(ctx *InstCaseContext) {}
+// ExitInstruccionCase is called when production InstruccionCase is exited.
+func (s *BaseControlListener) ExitInstruccionCase(ctx *InstruccionCaseContext) {}
 
-// EnterInstDefault is called when production instDefault is entered.
-func (s *BaseControlListener) EnterInstDefault(ctx *InstDefaultContext) {}
+// EnterInstruccionDefault is called when production InstruccionDefault is entered.
+func (s *BaseControlListener) EnterInstruccionDefault(ctx *InstruccionDefaultContext) {}
 
-// ExitInstDefault is called when production instDefault is exited.
-func (s *BaseControlListener) ExitInstDefault(ctx *InstDefaultContext) {}
+// ExitInstruccionDefault is called when production InstruccionDefault is exited.
+func (s *BaseControlListener) ExitInstruccionDefault(ctx *InstruccionDefaultContext) {}
 
-// EnterInstWhile is called when production instWhile is entered.
-func (s *BaseControlListener) EnterInstWhile(ctx *InstWhileContext) {}
+// EnterInstruccionWhile is called when production InstruccionWhile is entered.
+func (s *BaseControlListener) EnterInstruccionWhile(ctx *InstruccionWhileContext) {}
 
-// ExitInstWhile is called when production instWhile is exited.
-func (s *BaseControlListener) ExitInstWhile(ctx *InstWhileContext) {}
+// ExitInstruccionWhile is called when production InstruccionWhile is exited.
+func (s *BaseControlListener) ExitInstruccionWhile(ctx *InstruccionWhileContext) {}
 
-// EnterInstFor is called when production instFor is entered.
-func (s *BaseControlListener) EnterInstFor(ctx *InstForContext) {}
+// EnterInstruccionFor is called when production InstruccionFor is entered.
+func (s *BaseControlListener) EnterInstruccionFor(ctx *InstruccionForContext) {}
 
-// ExitInstFor is called when production instFor is exited.
-func (s *BaseControlListener) ExitInstFor(ctx *InstForContext) {}
+// ExitInstruccionFor is called when production InstruccionFor is exited.
+func (s *BaseControlListener) ExitInstruccionFor(ctx *InstruccionForContext) {}
 
-// EnterInstGuard is called when production instGuard is entered.
-func (s *BaseControlListener) EnterInstGuard(ctx *InstGuardContext) {}
+// EnterInstruccionGuard is called when production InstruccionGuard is entered.
+func (s *BaseControlListener) EnterInstruccionGuard(ctx *InstruccionGuardContext) {}
 
-// ExitInstGuard is called when production instGuard is exited.
-func (s *BaseControlListener) ExitInstGuard(ctx *InstGuardContext) {}
+// ExitInstruccionGuard is called when production InstruccionGuard is exited.
+func (s *BaseControlListener) ExitInstruccionGuard(ctx *InstruccionGuardContext) {}
 
-// EnterInstBreak is called when production instBreak is entered.
-func (s *BaseControlListener) EnterInstBreak(ctx *InstBreakContext) {}
+// EnterInstruccionBreak is called when production InstruccionBreak is entered.
+func (s *BaseControlListener) EnterInstruccionBreak(ctx *InstruccionBreakContext) {}
 
-// ExitInstBreak is called when production instBreak is exited.
-func (s *BaseControlListener) ExitInstBreak(ctx *InstBreakContext) {}
+// ExitInstruccionBreak is called when production InstruccionBreak is exited.
+func (s *BaseControlListener) ExitInstruccionBreak(ctx *InstruccionBreakContext) {}
 
-// EnterInstContinue is called when production instContinue is entered.
-func (s *BaseControlListener) EnterInstContinue(ctx *InstContinueContext) {}
+// EnterInstruccionContinue is called when production InstruccionContinue is entered.
+func (s *BaseControlListener) EnterInstruccionContinue(ctx *InstruccionContinueContext) {}
 
-// ExitInstContinue is called when production instContinue is exited.
-func (s *BaseControlListener) ExitInstContinue(ctx *InstContinueContext) {}
+// ExitInstruccionContinue is called when production InstruccionContinue is exited.
+func (s *BaseControlListener) ExitInstruccionContinue(ctx *InstruccionContinueContext) {}
 
-// EnterInstReturn is called when production instReturn is entered.
-func (s *BaseControlListener) EnterInstReturn(ctx *InstReturnContext) {}
+// EnterInstruccionReturnSimple is called when production InstruccionReturnSimple is entered.
+func (s *BaseControlListener) EnterInstruccionReturnSimple(ctx *InstruccionReturnSimpleContext) {}
 
-// ExitInstReturn is called when production instReturn is exited.
-func (s *BaseControlListener) ExitInstReturn(ctx *InstReturnContext) {}
+// ExitInstruccionReturnSimple is called when production InstruccionReturnSimple is exited.
+func (s *BaseControlListener) ExitInstruccionReturnSimple(ctx *InstruccionReturnSimpleContext) {}
 
-// EnterDecVector is called when production decVector is entered.
-func (s *BaseControlListener) EnterDecVector(ctx *DecVectorContext) {}
+// EnterInstruccionReturnExpresion is called when production InstruccionReturnExpresion is entered.
+func (s *BaseControlListener) EnterInstruccionReturnExpresion(ctx *InstruccionReturnExpresionContext) {
+}
 
-// ExitDecVector is called when production decVector is exited.
-func (s *BaseControlListener) ExitDecVector(ctx *DecVectorContext) {}
+// ExitInstruccionReturnExpresion is called when production InstruccionReturnExpresion is exited.
+func (s *BaseControlListener) ExitInstruccionReturnExpresion(ctx *InstruccionReturnExpresionContext) {
+}
 
-// EnterDefVector is called when production defVector is entered.
-func (s *BaseControlListener) EnterDefVector(ctx *DefVectorContext) {}
+// EnterDecVector_ExpresionLista is called when production DecVector_ExpresionLista is entered.
+func (s *BaseControlListener) EnterDecVector_ExpresionLista(ctx *DecVector_ExpresionListaContext) {}
 
-// ExitDefVector is called when production defVector is exited.
-func (s *BaseControlListener) ExitDefVector(ctx *DefVectorContext) {}
+// ExitDecVector_ExpresionLista is called when production DecVector_ExpresionLista is exited.
+func (s *BaseControlListener) ExitDecVector_ExpresionLista(ctx *DecVector_ExpresionListaContext) {}
 
-// EnterFuncsVectoriales is called when production funcsVectoriales is entered.
-func (s *BaseControlListener) EnterFuncsVectoriales(ctx *FuncsVectorialesContext) {}
+// EnterDecVector_ObjetLista is called when production DecVector_ObjetLista is entered.
+func (s *BaseControlListener) EnterDecVector_ObjetLista(ctx *DecVector_ObjetListaContext) {}
 
-// ExitFuncsVectoriales is called when production funcsVectoriales is exited.
-func (s *BaseControlListener) ExitFuncsVectoriales(ctx *FuncsVectorialesContext) {}
+// ExitDecVector_ObjetLista is called when production DecVector_ObjetLista is exited.
+func (s *BaseControlListener) ExitDecVector_ObjetLista(ctx *DecVector_ObjetListaContext) {}
+
+// EnterDecVector_Id is called when production DecVector_Id is entered.
+func (s *BaseControlListener) EnterDecVector_Id(ctx *DecVector_IdContext) {}
+
+// ExitDecVector_Id is called when production DecVector_Id is exited.
+func (s *BaseControlListener) ExitDecVector_Id(ctx *DecVector_IdContext) {}
+
+// EnterDecVectorConst_ExpresionLista is called when production DecVectorConst_ExpresionLista is entered.
+func (s *BaseControlListener) EnterDecVectorConst_ExpresionLista(ctx *DecVectorConst_ExpresionListaContext) {
+}
+
+// ExitDecVectorConst_ExpresionLista is called when production DecVectorConst_ExpresionLista is exited.
+func (s *BaseControlListener) ExitDecVectorConst_ExpresionLista(ctx *DecVectorConst_ExpresionListaContext) {
+}
+
+// EnterDecVectorConst_ObjetLista is called when production DecVectorConst_ObjetLista is entered.
+func (s *BaseControlListener) EnterDecVectorConst_ObjetLista(ctx *DecVectorConst_ObjetListaContext) {}
+
+// ExitDecVectorConst_ObjetLista is called when production DecVectorConst_ObjetLista is exited.
+func (s *BaseControlListener) ExitDecVectorConst_ObjetLista(ctx *DecVectorConst_ObjetListaContext) {}
+
+// EnterDecVectorConst_Id is called when production DecVectorConst_Id is entered.
+func (s *BaseControlListener) EnterDecVectorConst_Id(ctx *DecVectorConst_IdContext) {}
+
+// ExitDecVectorConst_Id is called when production DecVectorConst_Id is exited.
+func (s *BaseControlListener) ExitDecVectorConst_Id(ctx *DecVectorConst_IdContext) {}
+
+// EnterVectFunc_Append is called when production VectFunc_Append is entered.
+func (s *BaseControlListener) EnterVectFunc_Append(ctx *VectFunc_AppendContext) {}
+
+// ExitVectFunc_Append is called when production VectFunc_Append is exited.
+func (s *BaseControlListener) ExitVectFunc_Append(ctx *VectFunc_AppendContext) {}
+
+// EnterVectFunc_Remove is called when production VectFunc_Remove is entered.
+func (s *BaseControlListener) EnterVectFunc_Remove(ctx *VectFunc_RemoveContext) {}
+
+// ExitVectFunc_Remove is called when production VectFunc_Remove is exited.
+func (s *BaseControlListener) ExitVectFunc_Remove(ctx *VectFunc_RemoveContext) {}
+
+// EnterVectFunc_RemoveLast is called when production VectFunc_RemoveLast is entered.
+func (s *BaseControlListener) EnterVectFunc_RemoveLast(ctx *VectFunc_RemoveLastContext) {}
+
+// ExitVectFunc_RemoveLast is called when production VectFunc_RemoveLast is exited.
+func (s *BaseControlListener) ExitVectFunc_RemoveLast(ctx *VectFunc_RemoveLastContext) {}
 
 // EnterDecMatriz is called when production decMatriz is entered.
 func (s *BaseControlListener) EnterDecMatriz(ctx *DecMatrizContext) {}
@@ -352,17 +398,11 @@ func (s *BaseControlListener) EnterInstCasteos(ctx *InstCasteosContext) {}
 // ExitInstCasteos is called when production instCasteos is exited.
 func (s *BaseControlListener) ExitInstCasteos(ctx *InstCasteosContext) {}
 
-// EnterNumList is called when production numList is entered.
-func (s *BaseControlListener) EnterNumList(ctx *NumListContext) {}
+// EnterListaExpresiones is called when production ListaExpresiones is entered.
+func (s *BaseControlListener) EnterListaExpresiones(ctx *ListaExpresionesContext) {}
 
-// ExitNumList is called when production numList is exited.
-func (s *BaseControlListener) ExitNumList(ctx *NumListContext) {}
-
-// EnterExpresionList is called when production expresionList is entered.
-func (s *BaseControlListener) EnterExpresionList(ctx *ExpresionListContext) {}
-
-// ExitExpresionList is called when production expresionList is exited.
-func (s *BaseControlListener) ExitExpresionList(ctx *ExpresionListContext) {}
+// ExitListaExpresiones is called when production ListaExpresiones is exited.
+func (s *BaseControlListener) ExitListaExpresiones(ctx *ListaExpresionesContext) {}
 
 // EnterObjectsList is called when production objectsList is entered.
 func (s *BaseControlListener) EnterObjectsList(ctx *ObjectsListContext) {}
@@ -573,6 +613,12 @@ func (s *BaseControlListener) EnterExpr_Conteo(ctx *Expr_ConteoContext) {}
 
 // ExitExpr_Conteo is called when production Expr_Conteo is exited.
 func (s *BaseControlListener) ExitExpr_Conteo(ctx *Expr_ConteoContext) {}
+
+// EnterExpr_IsEmpty is called when production Expr_IsEmpty is entered.
+func (s *BaseControlListener) EnterExpr_IsEmpty(ctx *Expr_IsEmptyContext) {}
+
+// ExitExpr_IsEmpty is called when production Expr_IsEmpty is exited.
+func (s *BaseControlListener) ExitExpr_IsEmpty(ctx *Expr_IsEmptyContext) {}
 
 // EnterExpr_OpSumRes is called when production Expr_OpSumRes is entered.
 func (s *BaseControlListener) EnterExpr_OpSumRes(ctx *Expr_OpSumResContext) {}

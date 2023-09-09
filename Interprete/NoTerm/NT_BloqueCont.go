@@ -8,7 +8,14 @@ type NT_BloqueContent struct {
 
 func (lBlock NT_BloqueContent) Interpretar(ctx *interprete.Contexto) *interprete.Resultado {
 	for _, sentencia := range lBlock.nSentencias {
-		sentencia.Interpretar(ctx)
+		tmp := sentencia.Interpretar(ctx)
+		if tmp.Tipo == interprete.Break {
+			break
+		} else if tmp.Tipo == interprete.Continue {
+			continue
+		} else if tmp.Return {
+			return tmp
+		}
 	}
 	return interprete.NewNil()
 }

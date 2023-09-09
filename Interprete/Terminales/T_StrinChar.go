@@ -1,6 +1,8 @@
 package terminales
 
-import interprete "OLC2_PROYECTO_201908658/Interprete"
+import (
+	interprete "OLC2_PROYECTO_201908658/Interprete"
+)
 
 type T_StringChar struct {
 	Cadena  string
@@ -15,7 +17,7 @@ func (tcad *T_StringChar) Interpretar(ctx *interprete.Contexto) *interprete.Resu
 // Constructor for T_StringChar
 func NewT_StringChar(valor string, linea int, columna int) *T_StringChar {
 	o := new(T_StringChar)
-	o.Cadena = valor
+	o.Cadena = string(valor)
 	o.Linea = linea
 	o.Columna = columna
 	return o

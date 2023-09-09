@@ -70,50 +70,71 @@ type ControlListener interface {
 	// EnterSentenciaLLamadaMetodos is called when entering the SentenciaLLamadaMetodos production.
 	EnterSentenciaLLamadaMetodos(c *SentenciaLLamadaMetodosContext)
 
-	// EnterInsIf is called when entering the insIf production.
-	EnterInsIf(c *InsIfContext)
+	// EnterInstruccionIf is called when entering the InstruccionIf production.
+	EnterInstruccionIf(c *InstruccionIfContext)
 
-	// EnterInstElseIf is called when entering the instElseIf production.
-	EnterInstElseIf(c *InstElseIfContext)
+	// EnterInstruccionElseIf is called when entering the InstruccionElseIf production.
+	EnterInstruccionElseIf(c *InstruccionElseIfContext)
 
-	// EnterInsElse is called when entering the insElse production.
-	EnterInsElse(c *InsElseContext)
+	// EnterInstruccionElse is called when entering the InstruccionElse production.
+	EnterInstruccionElse(c *InstruccionElseContext)
 
-	// EnterInsSwitch is called when entering the insSwitch production.
-	EnterInsSwitch(c *InsSwitchContext)
+	// EnterInstruccionSwitch is called when entering the InstruccionSwitch production.
+	EnterInstruccionSwitch(c *InstruccionSwitchContext)
 
-	// EnterInstCase is called when entering the instCase production.
-	EnterInstCase(c *InstCaseContext)
+	// EnterInstruccionCase is called when entering the InstruccionCase production.
+	EnterInstruccionCase(c *InstruccionCaseContext)
 
-	// EnterInstDefault is called when entering the instDefault production.
-	EnterInstDefault(c *InstDefaultContext)
+	// EnterInstruccionDefault is called when entering the InstruccionDefault production.
+	EnterInstruccionDefault(c *InstruccionDefaultContext)
 
-	// EnterInstWhile is called when entering the instWhile production.
-	EnterInstWhile(c *InstWhileContext)
+	// EnterInstruccionWhile is called when entering the InstruccionWhile production.
+	EnterInstruccionWhile(c *InstruccionWhileContext)
 
-	// EnterInstFor is called when entering the instFor production.
-	EnterInstFor(c *InstForContext)
+	// EnterInstruccionFor is called when entering the InstruccionFor production.
+	EnterInstruccionFor(c *InstruccionForContext)
 
-	// EnterInstGuard is called when entering the instGuard production.
-	EnterInstGuard(c *InstGuardContext)
+	// EnterInstruccionGuard is called when entering the InstruccionGuard production.
+	EnterInstruccionGuard(c *InstruccionGuardContext)
 
-	// EnterInstBreak is called when entering the instBreak production.
-	EnterInstBreak(c *InstBreakContext)
+	// EnterInstruccionBreak is called when entering the InstruccionBreak production.
+	EnterInstruccionBreak(c *InstruccionBreakContext)
 
-	// EnterInstContinue is called when entering the instContinue production.
-	EnterInstContinue(c *InstContinueContext)
+	// EnterInstruccionContinue is called when entering the InstruccionContinue production.
+	EnterInstruccionContinue(c *InstruccionContinueContext)
 
-	// EnterInstReturn is called when entering the instReturn production.
-	EnterInstReturn(c *InstReturnContext)
+	// EnterInstruccionReturnSimple is called when entering the InstruccionReturnSimple production.
+	EnterInstruccionReturnSimple(c *InstruccionReturnSimpleContext)
 
-	// EnterDecVector is called when entering the decVector production.
-	EnterDecVector(c *DecVectorContext)
+	// EnterInstruccionReturnExpresion is called when entering the InstruccionReturnExpresion production.
+	EnterInstruccionReturnExpresion(c *InstruccionReturnExpresionContext)
 
-	// EnterDefVector is called when entering the defVector production.
-	EnterDefVector(c *DefVectorContext)
+	// EnterDecVector_ExpresionLista is called when entering the DecVector_ExpresionLista production.
+	EnterDecVector_ExpresionLista(c *DecVector_ExpresionListaContext)
 
-	// EnterFuncsVectoriales is called when entering the funcsVectoriales production.
-	EnterFuncsVectoriales(c *FuncsVectorialesContext)
+	// EnterDecVector_ObjetLista is called when entering the DecVector_ObjetLista production.
+	EnterDecVector_ObjetLista(c *DecVector_ObjetListaContext)
+
+	// EnterDecVector_Id is called when entering the DecVector_Id production.
+	EnterDecVector_Id(c *DecVector_IdContext)
+
+	// EnterDecVectorConst_ExpresionLista is called when entering the DecVectorConst_ExpresionLista production.
+	EnterDecVectorConst_ExpresionLista(c *DecVectorConst_ExpresionListaContext)
+
+	// EnterDecVectorConst_ObjetLista is called when entering the DecVectorConst_ObjetLista production.
+	EnterDecVectorConst_ObjetLista(c *DecVectorConst_ObjetListaContext)
+
+	// EnterDecVectorConst_Id is called when entering the DecVectorConst_Id production.
+	EnterDecVectorConst_Id(c *DecVectorConst_IdContext)
+
+	// EnterVectFunc_Append is called when entering the VectFunc_Append production.
+	EnterVectFunc_Append(c *VectFunc_AppendContext)
+
+	// EnterVectFunc_Remove is called when entering the VectFunc_Remove production.
+	EnterVectFunc_Remove(c *VectFunc_RemoveContext)
+
+	// EnterVectFunc_RemoveLast is called when entering the VectFunc_RemoveLast production.
+	EnterVectFunc_RemoveLast(c *VectFunc_RemoveLastContext)
 
 	// EnterDecMatriz is called when entering the decMatriz production.
 	EnterDecMatriz(c *DecMatrizContext)
@@ -169,11 +190,8 @@ type ControlListener interface {
 	// EnterInstCasteos is called when entering the instCasteos production.
 	EnterInstCasteos(c *InstCasteosContext)
 
-	// EnterNumList is called when entering the numList production.
-	EnterNumList(c *NumListContext)
-
-	// EnterExpresionList is called when entering the expresionList production.
-	EnterExpresionList(c *ExpresionListContext)
+	// EnterListaExpresiones is called when entering the ListaExpresiones production.
+	EnterListaExpresiones(c *ListaExpresionesContext)
 
 	// EnterObjectsList is called when entering the objectsList production.
 	EnterObjectsList(c *ObjectsListContext)
@@ -277,6 +295,9 @@ type ControlListener interface {
 	// EnterExpr_Conteo is called when entering the Expr_Conteo production.
 	EnterExpr_Conteo(c *Expr_ConteoContext)
 
+	// EnterExpr_IsEmpty is called when entering the Expr_IsEmpty production.
+	EnterExpr_IsEmpty(c *Expr_IsEmptyContext)
+
 	// EnterExpr_OpSumRes is called when entering the Expr_OpSumRes production.
 	EnterExpr_OpSumRes(c *Expr_OpSumResContext)
 
@@ -361,50 +382,71 @@ type ControlListener interface {
 	// ExitSentenciaLLamadaMetodos is called when exiting the SentenciaLLamadaMetodos production.
 	ExitSentenciaLLamadaMetodos(c *SentenciaLLamadaMetodosContext)
 
-	// ExitInsIf is called when exiting the insIf production.
-	ExitInsIf(c *InsIfContext)
+	// ExitInstruccionIf is called when exiting the InstruccionIf production.
+	ExitInstruccionIf(c *InstruccionIfContext)
 
-	// ExitInstElseIf is called when exiting the instElseIf production.
-	ExitInstElseIf(c *InstElseIfContext)
+	// ExitInstruccionElseIf is called when exiting the InstruccionElseIf production.
+	ExitInstruccionElseIf(c *InstruccionElseIfContext)
 
-	// ExitInsElse is called when exiting the insElse production.
-	ExitInsElse(c *InsElseContext)
+	// ExitInstruccionElse is called when exiting the InstruccionElse production.
+	ExitInstruccionElse(c *InstruccionElseContext)
 
-	// ExitInsSwitch is called when exiting the insSwitch production.
-	ExitInsSwitch(c *InsSwitchContext)
+	// ExitInstruccionSwitch is called when exiting the InstruccionSwitch production.
+	ExitInstruccionSwitch(c *InstruccionSwitchContext)
 
-	// ExitInstCase is called when exiting the instCase production.
-	ExitInstCase(c *InstCaseContext)
+	// ExitInstruccionCase is called when exiting the InstruccionCase production.
+	ExitInstruccionCase(c *InstruccionCaseContext)
 
-	// ExitInstDefault is called when exiting the instDefault production.
-	ExitInstDefault(c *InstDefaultContext)
+	// ExitInstruccionDefault is called when exiting the InstruccionDefault production.
+	ExitInstruccionDefault(c *InstruccionDefaultContext)
 
-	// ExitInstWhile is called when exiting the instWhile production.
-	ExitInstWhile(c *InstWhileContext)
+	// ExitInstruccionWhile is called when exiting the InstruccionWhile production.
+	ExitInstruccionWhile(c *InstruccionWhileContext)
 
-	// ExitInstFor is called when exiting the instFor production.
-	ExitInstFor(c *InstForContext)
+	// ExitInstruccionFor is called when exiting the InstruccionFor production.
+	ExitInstruccionFor(c *InstruccionForContext)
 
-	// ExitInstGuard is called when exiting the instGuard production.
-	ExitInstGuard(c *InstGuardContext)
+	// ExitInstruccionGuard is called when exiting the InstruccionGuard production.
+	ExitInstruccionGuard(c *InstruccionGuardContext)
 
-	// ExitInstBreak is called when exiting the instBreak production.
-	ExitInstBreak(c *InstBreakContext)
+	// ExitInstruccionBreak is called when exiting the InstruccionBreak production.
+	ExitInstruccionBreak(c *InstruccionBreakContext)
 
-	// ExitInstContinue is called when exiting the instContinue production.
-	ExitInstContinue(c *InstContinueContext)
+	// ExitInstruccionContinue is called when exiting the InstruccionContinue production.
+	ExitInstruccionContinue(c *InstruccionContinueContext)
 
-	// ExitInstReturn is called when exiting the instReturn production.
-	ExitInstReturn(c *InstReturnContext)
+	// ExitInstruccionReturnSimple is called when exiting the InstruccionReturnSimple production.
+	ExitInstruccionReturnSimple(c *InstruccionReturnSimpleContext)
 
-	// ExitDecVector is called when exiting the decVector production.
-	ExitDecVector(c *DecVectorContext)
+	// ExitInstruccionReturnExpresion is called when exiting the InstruccionReturnExpresion production.
+	ExitInstruccionReturnExpresion(c *InstruccionReturnExpresionContext)
 
-	// ExitDefVector is called when exiting the defVector production.
-	ExitDefVector(c *DefVectorContext)
+	// ExitDecVector_ExpresionLista is called when exiting the DecVector_ExpresionLista production.
+	ExitDecVector_ExpresionLista(c *DecVector_ExpresionListaContext)
 
-	// ExitFuncsVectoriales is called when exiting the funcsVectoriales production.
-	ExitFuncsVectoriales(c *FuncsVectorialesContext)
+	// ExitDecVector_ObjetLista is called when exiting the DecVector_ObjetLista production.
+	ExitDecVector_ObjetLista(c *DecVector_ObjetListaContext)
+
+	// ExitDecVector_Id is called when exiting the DecVector_Id production.
+	ExitDecVector_Id(c *DecVector_IdContext)
+
+	// ExitDecVectorConst_ExpresionLista is called when exiting the DecVectorConst_ExpresionLista production.
+	ExitDecVectorConst_ExpresionLista(c *DecVectorConst_ExpresionListaContext)
+
+	// ExitDecVectorConst_ObjetLista is called when exiting the DecVectorConst_ObjetLista production.
+	ExitDecVectorConst_ObjetLista(c *DecVectorConst_ObjetListaContext)
+
+	// ExitDecVectorConst_Id is called when exiting the DecVectorConst_Id production.
+	ExitDecVectorConst_Id(c *DecVectorConst_IdContext)
+
+	// ExitVectFunc_Append is called when exiting the VectFunc_Append production.
+	ExitVectFunc_Append(c *VectFunc_AppendContext)
+
+	// ExitVectFunc_Remove is called when exiting the VectFunc_Remove production.
+	ExitVectFunc_Remove(c *VectFunc_RemoveContext)
+
+	// ExitVectFunc_RemoveLast is called when exiting the VectFunc_RemoveLast production.
+	ExitVectFunc_RemoveLast(c *VectFunc_RemoveLastContext)
 
 	// ExitDecMatriz is called when exiting the decMatriz production.
 	ExitDecMatriz(c *DecMatrizContext)
@@ -460,11 +502,8 @@ type ControlListener interface {
 	// ExitInstCasteos is called when exiting the instCasteos production.
 	ExitInstCasteos(c *InstCasteosContext)
 
-	// ExitNumList is called when exiting the numList production.
-	ExitNumList(c *NumListContext)
-
-	// ExitExpresionList is called when exiting the expresionList production.
-	ExitExpresionList(c *ExpresionListContext)
+	// ExitListaExpresiones is called when exiting the ListaExpresiones production.
+	ExitListaExpresiones(c *ListaExpresionesContext)
 
 	// ExitObjectsList is called when exiting the objectsList production.
 	ExitObjectsList(c *ObjectsListContext)
@@ -567,6 +606,9 @@ type ControlListener interface {
 
 	// ExitExpr_Conteo is called when exiting the Expr_Conteo production.
 	ExitExpr_Conteo(c *Expr_ConteoContext)
+
+	// ExitExpr_IsEmpty is called when exiting the Expr_IsEmpty production.
+	ExitExpr_IsEmpty(c *Expr_IsEmptyContext)
 
 	// ExitExpr_OpSumRes is called when exiting the Expr_OpSumRes production.
 	ExitExpr_OpSumRes(c *Expr_OpSumResContext)

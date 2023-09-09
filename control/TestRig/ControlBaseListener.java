@@ -268,169 +268,229 @@ public class ControlBaseListener implements ControlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInsIf(ControlParser.InsIfContext ctx) { }
+	@Override public void enterInstruccionIf(ControlParser.InstruccionIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInsIf(ControlParser.InsIfContext ctx) { }
+	@Override public void exitInstruccionIf(ControlParser.InstruccionIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstElseIf(ControlParser.InstElseIfContext ctx) { }
+	@Override public void enterInstruccionElseIf(ControlParser.InstruccionElseIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstElseIf(ControlParser.InstElseIfContext ctx) { }
+	@Override public void exitInstruccionElseIf(ControlParser.InstruccionElseIfContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInsElse(ControlParser.InsElseContext ctx) { }
+	@Override public void enterInstruccionElse(ControlParser.InstruccionElseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInsElse(ControlParser.InsElseContext ctx) { }
+	@Override public void exitInstruccionElse(ControlParser.InstruccionElseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInsSwitch(ControlParser.InsSwitchContext ctx) { }
+	@Override public void enterInstruccionSwitch(ControlParser.InstruccionSwitchContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInsSwitch(ControlParser.InsSwitchContext ctx) { }
+	@Override public void exitInstruccionSwitch(ControlParser.InstruccionSwitchContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstCase(ControlParser.InstCaseContext ctx) { }
+	@Override public void enterInstruccionCase(ControlParser.InstruccionCaseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstCase(ControlParser.InstCaseContext ctx) { }
+	@Override public void exitInstruccionCase(ControlParser.InstruccionCaseContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstDefault(ControlParser.InstDefaultContext ctx) { }
+	@Override public void enterInstruccionDefault(ControlParser.InstruccionDefaultContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstDefault(ControlParser.InstDefaultContext ctx) { }
+	@Override public void exitInstruccionDefault(ControlParser.InstruccionDefaultContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstWhile(ControlParser.InstWhileContext ctx) { }
+	@Override public void enterInstruccionWhile(ControlParser.InstruccionWhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstWhile(ControlParser.InstWhileContext ctx) { }
+	@Override public void exitInstruccionWhile(ControlParser.InstruccionWhileContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstFor(ControlParser.InstForContext ctx) { }
+	@Override public void enterInstruccionFor(ControlParser.InstruccionForContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstFor(ControlParser.InstForContext ctx) { }
+	@Override public void exitInstruccionFor(ControlParser.InstruccionForContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstGuard(ControlParser.InstGuardContext ctx) { }
+	@Override public void enterInstruccionGuard(ControlParser.InstruccionGuardContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstGuard(ControlParser.InstGuardContext ctx) { }
+	@Override public void exitInstruccionGuard(ControlParser.InstruccionGuardContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstBreak(ControlParser.InstBreakContext ctx) { }
+	@Override public void enterInstruccionBreak(ControlParser.InstruccionBreakContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstBreak(ControlParser.InstBreakContext ctx) { }
+	@Override public void exitInstruccionBreak(ControlParser.InstruccionBreakContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstContinue(ControlParser.InstContinueContext ctx) { }
+	@Override public void enterInstruccionContinue(ControlParser.InstruccionContinueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstContinue(ControlParser.InstContinueContext ctx) { }
+	@Override public void exitInstruccionContinue(ControlParser.InstruccionContinueContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstReturn(ControlParser.InstReturnContext ctx) { }
+	@Override public void enterInstruccionReturnSimple(ControlParser.InstruccionReturnSimpleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstReturn(ControlParser.InstReturnContext ctx) { }
+	@Override public void exitInstruccionReturnSimple(ControlParser.InstruccionReturnSimpleContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDecVector(ControlParser.DecVectorContext ctx) { }
+	@Override public void enterInstruccionReturnExpresion(ControlParser.InstruccionReturnExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDecVector(ControlParser.DecVectorContext ctx) { }
+	@Override public void exitInstruccionReturnExpresion(ControlParser.InstruccionReturnExpresionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDefVector(ControlParser.DefVectorContext ctx) { }
+	@Override public void enterDecVector_ExpresionLista(ControlParser.DecVector_ExpresionListaContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDefVector(ControlParser.DefVectorContext ctx) { }
+	@Override public void exitDecVector_ExpresionLista(ControlParser.DecVector_ExpresionListaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecVector_ObjetLista(ControlParser.DecVector_ObjetListaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecVector_ObjetLista(ControlParser.DecVector_ObjetListaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecVector_Id(ControlParser.DecVector_IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecVector_Id(ControlParser.DecVector_IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecVectorConst_ExpresionLista(ControlParser.DecVectorConst_ExpresionListaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecVectorConst_ExpresionLista(ControlParser.DecVectorConst_ExpresionListaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecVectorConst_ObjetLista(ControlParser.DecVectorConst_ObjetListaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecVectorConst_ObjetLista(ControlParser.DecVectorConst_ObjetListaContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterDecVectorConst_Id(ControlParser.DecVectorConst_IdContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecVectorConst_Id(ControlParser.DecVectorConst_IdContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -664,25 +724,13 @@ public class ControlBaseListener implements ControlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterNumList(ControlParser.NumListContext ctx) { }
+	@Override public void enterListaExpresiones(ControlParser.ListaExpresionesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitNumList(ControlParser.NumListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void enterExpresionList(ControlParser.ExpresionListContext ctx) { }
-	/**
-	 * {@inheritDoc}
-	 *
-	 * <p>The default implementation does nothing.</p>
-	 */
-	@Override public void exitExpresionList(ControlParser.ExpresionListContext ctx) { }
+	@Override public void exitListaExpresiones(ControlParser.ListaExpresionesContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
