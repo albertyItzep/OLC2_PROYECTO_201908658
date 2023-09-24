@@ -9,15 +9,19 @@ type NT_InstIF struct {
 	bloqueInst interprete.AbstrExpr
 	elseIfIns  []interprete.AbstrExpr
 	elseIns    interprete.AbstrExpr
+	linea      int
+	columna    int
 }
 
 // Constructor for NT_InstIF
-func NewNT_InstIF(exp interprete.AbstrExpr, bloqueInst interprete.AbstrExpr) *NT_InstIF {
+func NewNT_InstIF(exp interprete.AbstrExpr, bloqueInst interprete.AbstrExpr, linea int, columna int) *NT_InstIF {
 	o := new(NT_InstIF)
 	o.exp = exp
 	o.bloqueInst = bloqueInst
 	o.elseIfIns = make([]interprete.AbstrExpr, 0)
 	o.elseIns = nil
+	o.linea = linea
+	o.columna = columna
 	return o
 }
 
@@ -25,7 +29,7 @@ func (ntIFG *NT_InstIF) Interpretar(ctx *interprete.Contexto) *interprete.Result
 	exp := ntIFG.exp.Interpretar(ctx)
 
 	if exp.Tipo != interprete.Bool {
-		ctx.AddError("Error IF: Expresion tipo incompatible")
+		ctx.AddError("Error IF: Expresion tipo incompatible", ntIFG.linea, ntIFG.columna)
 		return interprete.NewNil()
 	}
 	if exp.ValorB {
@@ -65,13 +69,17 @@ func (ntIG *NT_InstIF) AddElse(exp interprete.AbstrExpr) {
 type NT_InsElseIf struct {
 	exp        interprete.AbstrExpr
 	bloqueInst interprete.AbstrExpr
+	linea      int
+	columna    int
 }
 
 // Constructor for NT_InsElseIf
-func NewNT_InsElseIf(exp interprete.AbstrExpr, bloqueInst interprete.AbstrExpr) *NT_InsElseIf {
+func NewNT_InsElseIf(exp interprete.AbstrExpr, bloqueInst interprete.AbstrExpr, linea int, columna int) *NT_InsElseIf {
 	o := new(NT_InsElseIf)
 	o.exp = exp
 	o.bloqueInst = bloqueInst
+	o.linea = linea
+	o.columna = columna
 	return o
 }
 
@@ -79,7 +87,7 @@ func (ntElseIf *NT_InsElseIf) Interpretar(ctx *interprete.Contexto) *interprete.
 	exp := ntElseIf.exp.Interpretar(ctx)
 
 	if exp.Tipo != interprete.Bool {
-		ctx.AddError("Error IF: Expresion tipo incompatible")
+		ctx.AddError("Error IF: Expresion tipo incompatible", ntElseIf.linea, ntElseIf.columna)
 		return interprete.NewNil()
 	}
 

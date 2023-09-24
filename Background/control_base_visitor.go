@@ -155,6 +155,10 @@ func (v *BaseControlVisitor) VisitDecVector_Id(ctx *DecVector_IdContext) interfa
 	return v.VisitChildren(ctx)
 }
 
+func (v *BaseControlVisitor) VisitDecVector_ValCor(ctx *DecVector_ValCorContext) interface{} {
+	return v.VisitChildren(ctx)
+}
+
 func (v *BaseControlVisitor) VisitDecVectorConst_ExpresionLista(ctx *DecVectorConst_ExpresionListaContext) interface{} {
 	return v.VisitChildren(ctx)
 }
@@ -227,7 +231,7 @@ func (v *BaseControlVisitor) VisitLlamadaMetodos(ctx *LlamadaMetodosContext) int
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitDecFunciones(ctx *DecFuncionesContext) interface{} {
+func (v *BaseControlVisitor) VisitDec_Funcion(ctx *Dec_FuncionContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 
@@ -247,7 +251,7 @@ func (v *BaseControlVisitor) VisitIntruccionPrint(ctx *IntruccionPrintContext) i
 	return v.VisitChildren(ctx)
 }
 
-func (v *BaseControlVisitor) VisitInstCasteos(ctx *InstCasteosContext) interface{} {
+func (v *BaseControlVisitor) VisitInst_Casteos(ctx *Inst_CasteosContext) interface{} {
 	return v.VisitChildren(ctx)
 }
 

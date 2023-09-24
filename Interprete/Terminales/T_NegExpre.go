@@ -5,13 +5,17 @@ import (
 )
 
 type T_NegExp struct {
-	expOpe interprete.AbstrExpr
+	expOpe  interprete.AbstrExpr
+	Linea   int
+	Columna int
 }
 
 // Constructor for T_NegExp
-func NewT_NegExp(expOpe interprete.AbstrExpr) *T_NegExp {
+func NewT_NegExp(expOpe interprete.AbstrExpr, linea int, columna int) *T_NegExp {
 	o := new(T_NegExp)
 	o.expOpe = expOpe
+	o.Linea = linea
+	o.Columna = columna
 	return o
 }
 
@@ -25,7 +29,7 @@ func (tNegExp *T_NegExp) Interpretar(ctx *interprete.Contexto) *interprete.Resul
 		expre.ValorF = expre.ValorF * -1
 		return interprete.NewFloatLiteral(expre.ValorF)
 	default:
-		ctx.AddError("Error: Negacion unaria incorrecta")
+		ctx.AddError("Error: Negacion unaria incorrecta", tNegExp.Linea, tNegExp.Columna)
 		return interprete.NewNil()
 	}
 }

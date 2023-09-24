@@ -6,14 +6,18 @@ type NT_InstSwitch struct {
 	exp         interprete.AbstrExpr
 	InstCase    []NT_InstCase
 	InstDefault interprete.AbstrExpr
+	linea       int
+	columna     int
 }
 
 // Constructor for NT_InstSwitch
-func NewNT_InstSwitch(exp interprete.AbstrExpr) *NT_InstSwitch {
+func NewNT_InstSwitch(exp interprete.AbstrExpr, linea int, columna int) *NT_InstSwitch {
 	o := new(NT_InstSwitch)
 	o.exp = exp
 	o.InstCase = make([]NT_InstCase, 0)
 	o.InstDefault = nil
+	o.linea = linea
+	o.columna = columna
 	return o
 }
 
@@ -23,7 +27,7 @@ func (ntSwitch *NT_InstSwitch) Interpretar(ctx *interprete.Contexto) *interprete
 	for _, v := range ntSwitch.InstCase {
 		tmp := v.exp.Interpretar(ctx)
 		if expr.Tipo != tmp.Tipo {
-			ctx.AddError("Error Switch: tipos incompatibles para comparacion")
+			ctx.AddError("Error Switch: tipos incompatibles para comparacion", ntSwitch.linea, ntSwitch.columna)
 		}
 		switch expr.Tipo {
 		case interprete.Bool:

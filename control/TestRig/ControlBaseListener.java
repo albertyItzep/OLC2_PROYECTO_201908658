@@ -460,6 +460,18 @@ public class ControlBaseListener implements ControlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
+	@Override public void enterDecVector_ValCor(ControlParser.DecVector_ValCorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitDecVector_ValCor(ControlParser.DecVector_ValCorContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
 	@Override public void enterDecVectorConst_ExpresionLista(ControlParser.DecVectorConst_ExpresionListaContext ctx) { }
 	/**
 	 * {@inheritDoc}
@@ -496,13 +508,37 @@ public class ControlBaseListener implements ControlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterFuncsVectoriales(ControlParser.FuncsVectorialesContext ctx) { }
+	@Override public void enterVectFunc_Append(ControlParser.VectFunc_AppendContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitFuncsVectoriales(ControlParser.FuncsVectorialesContext ctx) { }
+	@Override public void exitVectFunc_Append(ControlParser.VectFunc_AppendContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVectFunc_Remove(ControlParser.VectFunc_RemoveContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVectFunc_Remove(ControlParser.VectFunc_RemoveContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterVectFunc_RemoveLast(ControlParser.VectFunc_RemoveLastContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitVectFunc_RemoveLast(ControlParser.VectFunc_RemoveLastContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -652,13 +688,13 @@ public class ControlBaseListener implements ControlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterDecFunciones(ControlParser.DecFuncionesContext ctx) { }
+	@Override public void enterDec_Funcion(ControlParser.Dec_FuncionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitDecFunciones(ControlParser.DecFuncionesContext ctx) { }
+	@Override public void exitDec_Funcion(ControlParser.Dec_FuncionContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -712,13 +748,13 @@ public class ControlBaseListener implements ControlListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterInstCasteos(ControlParser.InstCasteosContext ctx) { }
+	@Override public void enterInst_Casteos(ControlParser.Inst_CasteosContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitInstCasteos(ControlParser.InstCasteosContext ctx) { }
+	@Override public void exitInst_Casteos(ControlParser.Inst_CasteosContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -1139,6 +1175,18 @@ public class ControlBaseListener implements ControlListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitExpr_Conteo(ControlParser.Expr_ConteoContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterExpr_IsEmpty(ControlParser.Expr_IsEmptyContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitExpr_IsEmpty(ControlParser.Expr_IsEmptyContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

@@ -3,15 +3,19 @@ package noterm
 import interprete "OLC2_PROYECTO_201908658/Interprete"
 
 type NT_LogAnd struct {
-	expIzq interprete.AbstrExpr
-	expDer interprete.AbstrExpr
+	expIzq  interprete.AbstrExpr
+	expDer  interprete.AbstrExpr
+	linea   int
+	columna int
 }
 
 // Constructor for NT_LogAnd
-func NewNT_LogAnd(expIzq interprete.AbstrExpr, expDer interprete.AbstrExpr) *NT_LogAnd {
+func NewNT_LogAnd(expIzq interprete.AbstrExpr, expDer interprete.AbstrExpr, linea int, columna int) *NT_LogAnd {
 	o := new(NT_LogAnd)
 	o.expIzq = expIzq
 	o.expDer = expDer
+	o.linea = linea
+	o.columna = columna
 	return o
 }
 
@@ -20,7 +24,7 @@ func (ntAnd *NT_LogAnd) Interpretar(ctx *interprete.Contexto) *interprete.Result
 	expDer := ntAnd.expDer.Interpretar(ctx)
 
 	if expIzq.Tipo != interprete.Bool || expDer.Tipo != interprete.Bool {
-		ctx.AddError("Error: Tipos incompatibles para operador logico")
+		ctx.AddError("Error: Tipos incompatibles para operador logico", ntAnd.linea, ntAnd.columna)
 		return interprete.NewNil()
 	}
 
@@ -32,12 +36,14 @@ func (ntAnd *NT_LogAnd) Interpretar(ctx *interprete.Contexto) *interprete.Result
 }
 
 type NT_LogOR struct {
-	expIzq interprete.AbstrExpr
-	expDer interprete.AbstrExpr
+	expIzq  interprete.AbstrExpr
+	expDer  interprete.AbstrExpr
+	linea   int
+	columna int
 }
 
 // Constructor for NT_LogOR
-func NewNT_LogOR(expIzq interprete.AbstrExpr, expDer interprete.AbstrExpr) *NT_LogOR {
+func NewNT_LogOR(expIzq interprete.AbstrExpr, expDer interprete.AbstrExpr, linea int, columna int) *NT_LogOR {
 	o := new(NT_LogOR)
 	o.expIzq = expIzq
 	o.expDer = expDer
@@ -49,7 +55,7 @@ func (ntOR *NT_LogOR) Interpretar(ctx *interprete.Contexto) *interprete.Resultad
 	expDer := ntOR.expDer.Interpretar(ctx)
 
 	if expIzq.Tipo != interprete.Bool || expDer.Tipo != interprete.Bool {
-		ctx.AddError("Error: Tipos incompatibles para operador logico")
+		ctx.AddError("Error: Tipos incompatibles para operador logico", ntOR.linea, ntOR.columna)
 		return interprete.NewNil()
 	}
 
@@ -61,11 +67,13 @@ func (ntOR *NT_LogOR) Interpretar(ctx *interprete.Contexto) *interprete.Resultad
 }
 
 type NT_LogNot struct {
-	exp interprete.AbstrExpr
+	exp     interprete.AbstrExpr
+	linea   int
+	columna int
 }
 
 // Constructor for NT_LogNot
-func NewNT_LogNot(exp interprete.AbstrExpr) *NT_LogNot {
+func NewNT_LogNot(exp interprete.AbstrExpr, linea int, columna int) *NT_LogNot {
 	o := new(NT_LogNot)
 	o.exp = exp
 	return o
@@ -74,7 +82,7 @@ func NewNT_LogNot(exp interprete.AbstrExpr) *NT_LogNot {
 func (ntNot *NT_LogNot) Interpretar(ctx *interprete.Contexto) *interprete.Resultado {
 	exp := ntNot.exp.Interpretar(ctx)
 	if exp.Tipo != interprete.Bool {
-		ctx.AddError("Error: Tipo incompatible para operador logico")
+		ctx.AddError("Error: Tipo incompatible para operador logico", ntNot.linea, ntNot.columna)
 		return interprete.NewNil()
 	}
 

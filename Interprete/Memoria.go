@@ -12,6 +12,10 @@ func NewMemoria(anterior *Memoria) *Memoria {
 	}
 }
 
+func (m *Memoria) GetMemoria() map[string]*Symbol {
+	return m.variables
+}
+
 // metodos para crear variables
 func (m *Memoria) CreateSimbol(nombre string, tipo TipoD, tipoCompuesto TipoCompuesto, NumPar int, ListaPar []Symbol, Resultado *Resultado, Resultados []Resultado, linea int, columna int) (bool, string) {
 	if tipo != Resultado.Tipo {
@@ -90,6 +94,13 @@ func (m *Memoria) GetSimboloVector(nombre string) (bool, TipoD, []Resultado, boo
 		return simbolo.Constante, simbolo.TipoVector, simbolo.Resultados, true
 	}
 	return false, Nil, nil, false
+}
+func (m *Memoria) GetSimboloTipoD(nombre string) TipoD {
+	simbolo, res := m.variables[nombre]
+	if res {
+		return simbolo.Tipo
+	}
+	return Nil
 }
 
 func (m *Memoria) SetSymbolVector(nombre string, Resultado []Resultado) (bool, string) {

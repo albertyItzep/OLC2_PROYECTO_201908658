@@ -27,7 +27,7 @@ func (ntDecConstEx *NT_DecConstanteExpresion) Interpretar(ctx *interprete.Contex
 		expr = ntDecConstEx.Expresion.Interpretar(ctx)
 		res, resString := ctx.AgregarConstanteExpresion(ntDecConstEx.Id, expr.Tipo, interprete.Nativo, -1, nil, expr, nil, ntDecConstEx.linea, ntDecConstEx.columna)
 		if !res {
-			ctx.AddError(resString)
+			ctx.AddError(resString, ntDecConstEx.linea, ntDecConstEx.columna)
 			return interprete.NewNil()
 		}
 	}
@@ -59,7 +59,7 @@ func (ntConsComplet *NT_DecConsComp) Interpretar(ctx *interprete.Contexto) *inte
 		expr = ntConsComplet.expresion.Interpretar(ctx)
 		res, resString := ctx.AgregarConstanteExpresion(ntConsComplet.Id, ntConsComplet.Tipo, interprete.Nativo, -1, nil, expr, nil, ntConsComplet.linea, ntConsComplet.columna)
 		if !res {
-			ctx.AddError(resString)
+			ctx.AddError(resString, ntConsComplet.linea, ntConsComplet.columna)
 			return interprete.NewNil()
 		}
 	}

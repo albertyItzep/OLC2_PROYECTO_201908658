@@ -447,8 +447,7 @@ func (v VisitorInterprete) VisitExpr_Decimal(ctx *Background.Expr_DecimalContext
 
 // Visit a parse tree produced by ControlParser#Expr_InstCasteo.
 func (v VisitorInterprete) VisitExpr_InstCasteo(ctx *Background.Expr_InstCasteoContext) interface{} {
-	fmt.Print("167")
-	panic("not implemented") // TODO: Implement
+	return ctx.InstCasteos().Accept(v).(interprete.AbstrExpr)
 }
 
 // Visit a parse tree produced by ControlParser#Expr_ValidaIgualDif.
@@ -457,9 +456,9 @@ func (v VisitorInterprete) VisitExpr_ValidaIgualDif(ctx *Background.Expr_ValidaI
 	expDer := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
 
 	if ctx.GetOp().GetText() == "==" {
-		return noterm.NewNT_CompIgualdad(expIzq, expDer)
+		return noterm.NewNT_CompIgualdad(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetColumn())
 	} else {
-		return noterm.NewNT_CompDif(expIzq, expDer)
+		return noterm.NewNT_CompDif(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetColumn())
 	}
 }
 
@@ -468,9 +467,9 @@ func (v VisitorInterprete) VisitExpr_OpMulDiv(ctx *Background.Expr_OpMulDivConte
 	expIzq := ctx.Expr(0).Accept(v).(interprete.AbstrExpr)
 	expDer := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
 	if ctx.GetOp().GetText() == "*" {
-		return noterm.NewNT_ExpMult(expIzq, expDer)
+		return noterm.NewNT_ExpMult(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetColumn())
 	} else {
-		return noterm.NewNT_ExpDiv(expIzq, expDer)
+		return noterm.NewNT_ExpDiv(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetColumn())
 	}
 }
 
@@ -478,7 +477,7 @@ func (v VisitorInterprete) VisitExpr_OpMulDiv(ctx *Background.Expr_OpMulDivConte
 func (v VisitorInterprete) VisitExpr_ValidaAnd(ctx *Background.Expr_ValidaAndContext) interface{} {
 	expIzq := ctx.Expr(0).Accept(v).(interprete.AbstrExpr)
 	expDer := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
-	return noterm.NewNT_LogAnd(expIzq, expDer)
+	return noterm.NewNT_LogAnd(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#Expr_LlamAtributos.
@@ -520,20 +519,20 @@ func (v VisitorInterprete) VisitExpr_InstRango(ctx *Background.Expr_InstRangoCon
 // Visit a parse tree produced by ControlParser#Expr_ValNumNeg.
 func (v VisitorInterprete) VisitExpr_ValNumNeg(ctx *Background.Expr_ValNumNegContext) interface{} {
 	expr := ctx.Expr().Accept(v).(interprete.AbstrExpr)
-	return terminales.NewT_NegExp(expr)
+	return terminales.NewT_NegExp(expr, ctx.Expr().GetStart().GetLine(), ctx.Expr().GetStart().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#Expr_ValidaOr.
 func (v VisitorInterprete) VisitExpr_ValidaOr(ctx *Background.Expr_ValidaOrContext) interface{} {
 	expIzq := ctx.Expr(0).Accept(v).(interprete.AbstrExpr)
 	expDer := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
-	return noterm.NewNT_LogOR(expIzq, expDer)
+	return noterm.NewNT_LogOR(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#Expr_ValNegacion.
 func (v VisitorInterprete) VisitExpr_ValNegacion(ctx *Background.Expr_ValNegacionContext) interface{} {
 	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
-	return noterm.NewNT_LogNot(exp)
+	return noterm.NewNT_LogNot(exp, ctx.Expr().GetStart().GetLine(), ctx.GetStart().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#Expr_ID.
@@ -551,16 +550,16 @@ func (v VisitorInterprete) VisitExpr_ValidaMayQue(ctx *Background.Expr_ValidaMay
 	expDer := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
 
 	if ctx.GetOp().GetText() == ">=" {
-		return noterm.NewNT_RelMayIgual(expIzq, expDer)
+		return noterm.NewNT_RelMayIgual(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetLine())
 	} else {
-		return noterm.NewNT_RelMayor(expIzq, expDer)
+		return noterm.NewNT_RelMayor(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetLine())
 	}
 }
 
 // Visit a parse tree produced by ControlParser#Expr_Conteo.
 func (v VisitorInterprete) VisitExpr_Conteo(ctx *Background.Expr_ConteoContext) interface{} {
 	nombre := ctx.ID().GetText()
-	funcVectors := noterm.NewNT_FunVectorsN()
+	funcVectors := noterm.NewNT_FunVectorsN(ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetLine())
 	funcVectors.SetExpre(nil)
 	funcVectors.SetNombre(nombre)
 	funcVectors.SetTipoFunc("count")
@@ -573,11 +572,11 @@ func (v VisitorInterprete) VisitExpr_OpSumRes(ctx *Background.Expr_OpSumResConte
 	expDer := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
 
 	if ctx.GetOp().GetText() == "+" {
-		return noterm.NewNT_ExpSum(expIzq, expDer)
+		return noterm.NewNT_ExpSum(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetColumn())
 	} else if ctx.GetOp().GetText() == "-" {
-		return noterm.NewNT_ExpRes(expIzq, expDer)
+		return noterm.NewNT_ExpRes(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetColumn())
 	} else {
-		return noterm.NewNT_ExpModulo(expIzq, expDer)
+		return noterm.NewNT_ExpModulo(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetColumn())
 	}
 }
 
@@ -608,9 +607,9 @@ func (v VisitorInterprete) VisitExpr_ValidaMenQue(ctx *Background.Expr_ValidaMen
 	expDer := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
 
 	if ctx.GetOp().GetText() == "<=" {
-		return noterm.NewNT_RelMenIgual(expIzq, expDer)
+		return noterm.NewNT_RelMenIgual(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetLine())
 	} else {
-		return noterm.NewNT_RelMenor(expIzq, expDer)
+		return noterm.NewNT_RelMenor(expIzq, expDer, ctx.Expr(0).GetStart().GetLine(), ctx.Expr(0).GetStart().GetLine())
 	}
 }
 
@@ -618,7 +617,7 @@ func (v VisitorInterprete) VisitExpr_ValidaMenQue(ctx *Background.Expr_ValidaMen
 func (v VisitorInterprete) VisitExpr_PosVector(ctx *Background.Expr_PosVectorContext) interface{} {
 	nombre := ctx.ID().GetText()
 	expr := ctx.Expr().Accept(v).(interprete.AbstrExpr)
-	return terminales.NewT_IdVector(nombre, expr)
+	return terminales.NewT_IdVector(nombre, expr, ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#tipovariable.
@@ -640,7 +639,7 @@ func (v VisitorInterprete) VisitAsignacion_Decremento(ctx *Background.Asignacion
 	id := ctx.ID().GetText()
 	expr := ctx.Expr().Accept(v).(interprete.AbstrExpr)
 
-	return noterm.NewNT_AsDecremento(id, expr)
+	return noterm.NewNT_AsDecremento(id, expr, ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#Asignacion_ValorGen.
@@ -648,7 +647,7 @@ func (v VisitorInterprete) VisitAsignacion_ValorGen(ctx *Background.Asignacion_V
 	id := ctx.ID().GetText()
 	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
 
-	return noterm.NewNT_AsGeneral(id, exp)
+	return noterm.NewNT_AsGeneral(id, exp, ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#Asignacion_VectorAumento.
@@ -656,7 +655,7 @@ func (v VisitorInterprete) VisitAsignacion_VectorAumento(ctx *Background.Asignac
 	nombre := ctx.ID().GetText()
 	expValor := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
 	expPos := ctx.Expr(0).Accept(v).(interprete.AbstrExpr)
-	return noterm.NewNT_AsigVector(nombre, "+=", expPos, expValor)
+	return noterm.NewNT_AsigVector(nombre, "+=", expPos, expValor, ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#Asignacion_VectorDecremento.
@@ -664,7 +663,7 @@ func (v VisitorInterprete) VisitAsignacion_VectorDecremento(ctx *Background.Asig
 	nombre := ctx.ID().GetText()
 	expValor := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
 	expPos := ctx.Expr(0).Accept(v).(interprete.AbstrExpr)
-	return noterm.NewNT_AsigVector(nombre, "-=", expPos, expValor)
+	return noterm.NewNT_AsigVector(nombre, "-=", expPos, expValor, ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#Asignacion_MatrixAumento.
@@ -682,7 +681,7 @@ func (v VisitorInterprete) VisitAsignacion_VectorGeneral(ctx *Background.Asignac
 	nombre := ctx.ID().GetText()
 	expValor := ctx.Expr(1).Accept(v).(interprete.AbstrExpr)
 	expPos := ctx.Expr(0).Accept(v).(interprete.AbstrExpr)
-	return noterm.NewNT_AsigVector(nombre, "==", expPos, expValor)
+	return noterm.NewNT_AsigVector(nombre, "==", expPos, expValor, ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#Asignacion_MatrixGeneral.
@@ -710,7 +709,7 @@ func (v VisitorInterprete) VisitInstruccionIf(ctx *Background.InstruccionIfConte
 	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
 	content := ctx.Block().Accept(v).(interprete.AbstrExpr)
 
-	ifsentecia := noterm.NewNT_InstIF(exp, content)
+	ifsentecia := noterm.NewNT_InstIF(exp, content, ctx.Expr().GetStart().GetLine(), ctx.Expr().GetStart().GetColumn())
 
 	if ctx.InsElse() != nil {
 		elseSentencia := ctx.InsElse().Accept(v).(interprete.AbstrExpr)
@@ -730,7 +729,7 @@ func (v VisitorInterprete) VisitInstruccionIf(ctx *Background.InstruccionIfConte
 func (v VisitorInterprete) VisitInstruccionElseIf(ctx *Background.InstruccionElseIfContext) interface{} {
 	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
 	content := ctx.Block().Accept(v).(interprete.AbstrExpr)
-	return noterm.NewNT_InsElseIf(exp, content)
+	return noterm.NewNT_InsElseIf(exp, content, ctx.Expr().GetStart().GetLine(), ctx.Expr().GetStart().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#InstruccionElse.
@@ -744,7 +743,7 @@ func (v VisitorInterprete) VisitInstruccionSwitch(ctx *Background.InstruccionSwi
 	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
 	cases := ctx.AllInstCase()
 
-	sentenciaSwitch := noterm.NewNT_InstSwitch(exp)
+	sentenciaSwitch := noterm.NewNT_InstSwitch(exp, ctx.Expr().GetStart().GetLine(), ctx.Expr().GetStart().GetColumn())
 
 	if ctx.InstDefault() != nil {
 		sentenciaSwitch.AddDefault(noterm.NewNT_InstDefault(ctx.InstDefault().Accept(v).(interprete.AbstrExpr)))
@@ -798,7 +797,7 @@ func (v VisitorInterprete) VisitInstruccionWhile(ctx *Background.InstruccionWhil
 	expr := ctx.Expr().Accept(v).(interprete.AbstrExpr)
 	block := ctx.Block().Accept(v).(interprete.AbstrExpr)
 
-	return noterm.NewNT_InstWhile(expr, block)
+	return noterm.NewNT_InstWhile(expr, block, ctx.Expr().GetStart().GetLine(), ctx.Expr().GetStart().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#InstruccionFor.
@@ -820,7 +819,7 @@ func (v VisitorInterprete) VisitInstruccionFor(ctx *Background.InstruccionForCon
 func (v VisitorInterprete) VisitInstruccionGuard(ctx *Background.InstruccionGuardContext) interface{} {
 	exp := ctx.Expr().Accept(v).(interprete.AbstrExpr)
 	block := ctx.Block().Accept(v).(interprete.AbstrExpr)
-	return noterm.NewNT_InstGuard(exp, block)
+	return noterm.NewNT_InstGuard(exp, block, ctx.Expr().GetStart().GetLine(), ctx.Expr().GetStart().GetColumn())
 }
 
 // Visit a parse tree produced by ControlParser#ListaExpresiones.
@@ -860,12 +859,61 @@ func (v VisitorInterprete) VisitDecVector_ObjetLista(ctx *Background.DecVector_O
 
 // Visit a parse tree produced by ControlParser#DecVector_Id.
 func (v VisitorInterprete) VisitDecVector_Id(ctx *Background.DecVector_IdContext) interface{} {
-	panic("not implemented") // TODO: Implement
+	ids := ctx.AllID()
+	if len(ids) == 3 {
+		nombre := ids[0]
+		tipoVar := ids[1]
+		idVar := ids[2]
+		idTmp := terminales.NewT_IdExp(idVar.GetText(), idVar.GetSymbol().GetLine(), idVar.GetSymbol().GetColumn())
+		return noterm.NewNT_DecVectorID(nombre.GetText(), true, interprete.Nil, tipoVar.GetText(), idTmp, ctx.GetStart().GetColumn(), ctx.GetStart().GetColumn())
+	} else {
+		nombre := ids[0]
+		idVar := ids[1]
+		tipoVar := terminales.NewT_TipoVariable(ctx.Tipovariable().GetText()).GetTipoD()
+		idTmp := terminales.NewT_IdExp(idVar.GetText(), idVar.GetSymbol().GetLine(), idVar.GetSymbol().GetColumn())
+		return noterm.NewNT_DecVectorID(nombre.GetText(), true, tipoVar, "", idTmp, ctx.GetStart().GetColumn(), ctx.GetStart().GetColumn())
+	}
+}
+
+// Visit a parse tree produced by ControlParser#DecVector_ValCor.
+func (v VisitorInterprete) VisitDecVector_ValCor(ctx *Background.DecVector_ValCorContext) interface{} {
+	nombre := ctx.ID(0).GetText()
+	tipoVar := interprete.Nil
+	tipoId := interprete.Nil
+	if ctx.Tipovariable() != nil && ctx.ID(1) == nil {
+		tipoVar = terminales.NewT_TipoVariable(ctx.Tipovariable().GetText()).GetTipoD()
+		tipoId = interprete.Nil
+	} else if ctx.Tipovariable() == nil && ctx.ID(1) != nil {
+		tipoId = terminales.NewT_TipoVariable(ctx.ID(1).GetText()).GetTipoD()
+		tipoVar = interprete.Nil
+	}
+	tmp := noterm.NewNT_DecVector(nombre, tipoVar, tipoId, ctx.GetStart().GetLine(), ctx.GetStart().GetColumn())
+	return tmp
 }
 
 // Visit a parse tree produced by ControlParser#DecVectorConst_ExpresionLista.
 func (v VisitorInterprete) VisitDecVectorConst_ExpresionLista(ctx *Background.DecVectorConst_ExpresionListaContext) interface{} {
-	panic("not implemented") // TODO: Implement
+	nombre := ctx.ID(0).GetText()
+	tipoVar := interprete.Nil
+	tipoId := interprete.Nil
+	if ctx.Tipovariable() != nil && ctx.ID(1) == nil {
+		tipoVar = terminales.NewT_TipoVariable(ctx.Tipovariable().GetText()).GetTipoD()
+		tipoId = interprete.Nil
+	} else if ctx.Tipovariable() == nil && ctx.ID(1) != nil {
+		tipoId = terminales.NewT_TipoVariable(ctx.ID(1).GetText()).GetTipoD()
+		tipoVar = interprete.Nil
+	}
+
+	tmp := noterm.NewNT_DecVectorConst(nombre, tipoVar, tipoId, ctx.GetStart().GetLine(), ctx.GetStart().GetColumn())
+
+	sentencias := ctx.AllExpresionList()
+
+	for _, sentencia := range sentencias {
+		tmp1 := sentencia.Accept(v).(interprete.AbstrExpr)
+		tmp.AddExpresion(tmp1)
+	}
+
+	return tmp
 }
 
 // Visit a parse tree produced by ControlParser#DecVectorConst_ObjetLista.
@@ -875,13 +923,26 @@ func (v VisitorInterprete) VisitDecVectorConst_ObjetLista(ctx *Background.DecVec
 
 // Visit a parse tree produced by ControlParser#DecVectorConst_Id.
 func (v VisitorInterprete) VisitDecVectorConst_Id(ctx *Background.DecVectorConst_IdContext) interface{} {
-	panic("not implemented") // TODO: Implement
+	ids := ctx.AllID()
+	if len(ids) == 3 {
+		nombre := ids[0]
+		tipoVar := ids[1]
+		idVar := ids[2]
+		idTmp := terminales.NewT_IdExp(idVar.GetText(), idVar.GetSymbol().GetLine(), idVar.GetSymbol().GetColumn())
+		return noterm.NewNT_DecVectorID(nombre.GetText(), false, interprete.Nil, tipoVar.GetText(), idTmp, ctx.GetStart().GetColumn(), ctx.GetStart().GetColumn())
+	} else {
+		nombre := ids[0]
+		idVar := ids[1]
+		tipoVar := terminales.NewT_TipoVariable(ctx.Tipovariable().GetText()).GetTipoD()
+		idTmp := terminales.NewT_IdExp(idVar.GetText(), idVar.GetSymbol().GetLine(), idVar.GetSymbol().GetColumn())
+		return noterm.NewNT_DecVectorID(nombre.GetText(), false, tipoVar, "", idTmp, ctx.GetStart().GetColumn(), ctx.GetStart().GetColumn())
+	}
 }
 
 // Visit a parse tree produced by ControlParser#VectFunc_Append.
 func (v VisitorInterprete) VisitVectFunc_Append(ctx *Background.VectFunc_AppendContext) interface{} {
 	nombre := ctx.ID().GetText()
-	funcVectors := noterm.NewNT_FunVectorsN()
+	funcVectors := noterm.NewNT_FunVectorsN(ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetLine())
 	if ctx.Expr() != nil {
 		funcVectors.SetExpre(ctx.Expr().Accept(v).(interprete.AbstrExpr))
 	} else if ctx.LDupla() != nil {
@@ -895,7 +956,7 @@ func (v VisitorInterprete) VisitVectFunc_Append(ctx *Background.VectFunc_AppendC
 // Visit a parse tree produced by ControlParser#VectFunc_Remove.
 func (v VisitorInterprete) VisitVectFunc_Remove(ctx *Background.VectFunc_RemoveContext) interface{} {
 	nombre := ctx.ID().GetText()
-	funcVectors := noterm.NewNT_FunVectorsN()
+	funcVectors := noterm.NewNT_FunVectorsN(ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetLine())
 	funcVectors.SetExpre(ctx.Expr().Accept(v).(interprete.AbstrExpr))
 	funcVectors.SetNombre(nombre)
 	funcVectors.SetTipoFunc("removeAt")
@@ -905,7 +966,7 @@ func (v VisitorInterprete) VisitVectFunc_Remove(ctx *Background.VectFunc_RemoveC
 // Visit a parse tree produced by ControlParser#VectFunc_RemoveLast.
 func (v VisitorInterprete) VisitVectFunc_RemoveLast(ctx *Background.VectFunc_RemoveLastContext) interface{} {
 	nombre := ctx.ID().GetText()
-	funcVectors := noterm.NewNT_FunVectorsN()
+	funcVectors := noterm.NewNT_FunVectorsN(ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetLine())
 	funcVectors.SetExpre(nil)
 	funcVectors.SetNombre(nombre)
 	funcVectors.SetTipoFunc("removeLast")
@@ -915,9 +976,21 @@ func (v VisitorInterprete) VisitVectFunc_RemoveLast(ctx *Background.VectFunc_Rem
 // Visit a parse tree produced by ControlParser#Expr_IsEmpty.
 func (v VisitorInterprete) VisitExpr_IsEmpty(ctx *Background.Expr_IsEmptyContext) interface{} {
 	nombre := ctx.ID().GetText()
-	funcVectors := noterm.NewNT_FunVectorsN()
+	funcVectors := noterm.NewNT_FunVectorsN(ctx.ID().GetSymbol().GetLine(), ctx.ID().GetSymbol().GetLine())
 	funcVectors.SetExpre(nil)
 	funcVectors.SetNombre(nombre)
 	funcVectors.SetTipoFunc("empty")
 	return funcVectors
+}
+
+// Visit a parse tree produced by ControlParser#Dec_Funcion.
+func (v VisitorInterprete) VisitDec_Funcion(ctx *Background.Dec_FuncionContext) interface{} {
+	panic("No implemented")
+}
+
+// Visit a parse tree produced by ControlParser#Inst_Casteos.
+func (v VisitorInterprete) VisitInst_Casteos(ctx *Background.Inst_CasteosContext) interface{} {
+	tipoDato := ctx.Tipovariable().GetText()
+	expr := ctx.Expr().Accept(v).(interprete.AbstrExpr)
+	return noterm.NewNT_DataCasteo(tipoDato, expr, ctx.Tipovariable().GetStart().GetLine(), ctx.Tipovariable().GetStart().GetColumn())
 }

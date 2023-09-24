@@ -118,6 +118,9 @@ type ControlVisitor interface {
 	// Visit a parse tree produced by ControlParser#DecVector_Id.
 	VisitDecVector_Id(ctx *DecVector_IdContext) interface{}
 
+	// Visit a parse tree produced by ControlParser#DecVector_ValCor.
+	VisitDecVector_ValCor(ctx *DecVector_ValCorContext) interface{}
+
 	// Visit a parse tree produced by ControlParser#DecVectorConst_ExpresionLista.
 	VisitDecVectorConst_ExpresionLista(ctx *DecVectorConst_ExpresionListaContext) interface{}
 
@@ -172,8 +175,8 @@ type ControlVisitor interface {
 	// Visit a parse tree produced by ControlParser#llamadaMetodos.
 	VisitLlamadaMetodos(ctx *LlamadaMetodosContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#decFunciones.
-	VisitDecFunciones(ctx *DecFuncionesContext) interface{}
+	// Visit a parse tree produced by ControlParser#Dec_Funcion.
+	VisitDec_Funcion(ctx *Dec_FuncionContext) interface{}
 
 	// Visit a parse tree produced by ControlParser#listaParametros.
 	VisitListaParametros(ctx *ListaParametrosContext) interface{}
@@ -187,8 +190,8 @@ type ControlVisitor interface {
 	// Visit a parse tree produced by ControlParser#IntruccionPrint.
 	VisitIntruccionPrint(ctx *IntruccionPrintContext) interface{}
 
-	// Visit a parse tree produced by ControlParser#instCasteos.
-	VisitInstCasteos(ctx *InstCasteosContext) interface{}
+	// Visit a parse tree produced by ControlParser#Inst_Casteos.
+	VisitInst_Casteos(ctx *Inst_CasteosContext) interface{}
 
 	// Visit a parse tree produced by ControlParser#ListaExpresiones.
 	VisitListaExpresiones(ctx *ListaExpresionesContext) interface{}

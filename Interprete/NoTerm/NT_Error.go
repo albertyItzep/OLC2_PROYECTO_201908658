@@ -8,8 +8,9 @@ type NT_Error struct {
 	columna  int
 }
 
+//no recordaba que tenia este objeto, volvia crear uno y aplique el otro
 func (ntError *NT_Error) Interpretar(ctx *interprete.Contexto) *interprete.Resultado {
-	ctx.AddError(ntError.valError)
+	ctx.AddError(ntError.valError, ntError.linea, ntError.columna)
 	return interprete.NewNil()
 }
 

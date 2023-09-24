@@ -118,6 +118,9 @@ type ControlListener interface {
 	// EnterDecVector_Id is called when entering the DecVector_Id production.
 	EnterDecVector_Id(c *DecVector_IdContext)
 
+	// EnterDecVector_ValCor is called when entering the DecVector_ValCor production.
+	EnterDecVector_ValCor(c *DecVector_ValCorContext)
+
 	// EnterDecVectorConst_ExpresionLista is called when entering the DecVectorConst_ExpresionLista production.
 	EnterDecVectorConst_ExpresionLista(c *DecVectorConst_ExpresionListaContext)
 
@@ -172,8 +175,8 @@ type ControlListener interface {
 	// EnterLlamadaMetodos is called when entering the llamadaMetodos production.
 	EnterLlamadaMetodos(c *LlamadaMetodosContext)
 
-	// EnterDecFunciones is called when entering the decFunciones production.
-	EnterDecFunciones(c *DecFuncionesContext)
+	// EnterDec_Funcion is called when entering the Dec_Funcion production.
+	EnterDec_Funcion(c *Dec_FuncionContext)
 
 	// EnterListaParametros is called when entering the listaParametros production.
 	EnterListaParametros(c *ListaParametrosContext)
@@ -187,8 +190,8 @@ type ControlListener interface {
 	// EnterIntruccionPrint is called when entering the IntruccionPrint production.
 	EnterIntruccionPrint(c *IntruccionPrintContext)
 
-	// EnterInstCasteos is called when entering the instCasteos production.
-	EnterInstCasteos(c *InstCasteosContext)
+	// EnterInst_Casteos is called when entering the Inst_Casteos production.
+	EnterInst_Casteos(c *Inst_CasteosContext)
 
 	// EnterListaExpresiones is called when entering the ListaExpresiones production.
 	EnterListaExpresiones(c *ListaExpresionesContext)
@@ -430,6 +433,9 @@ type ControlListener interface {
 	// ExitDecVector_Id is called when exiting the DecVector_Id production.
 	ExitDecVector_Id(c *DecVector_IdContext)
 
+	// ExitDecVector_ValCor is called when exiting the DecVector_ValCor production.
+	ExitDecVector_ValCor(c *DecVector_ValCorContext)
+
 	// ExitDecVectorConst_ExpresionLista is called when exiting the DecVectorConst_ExpresionLista production.
 	ExitDecVectorConst_ExpresionLista(c *DecVectorConst_ExpresionListaContext)
 
@@ -484,8 +490,8 @@ type ControlListener interface {
 	// ExitLlamadaMetodos is called when exiting the llamadaMetodos production.
 	ExitLlamadaMetodos(c *LlamadaMetodosContext)
 
-	// ExitDecFunciones is called when exiting the decFunciones production.
-	ExitDecFunciones(c *DecFuncionesContext)
+	// ExitDec_Funcion is called when exiting the Dec_Funcion production.
+	ExitDec_Funcion(c *Dec_FuncionContext)
 
 	// ExitListaParametros is called when exiting the listaParametros production.
 	ExitListaParametros(c *ListaParametrosContext)
@@ -499,8 +505,8 @@ type ControlListener interface {
 	// ExitIntruccionPrint is called when exiting the IntruccionPrint production.
 	ExitIntruccionPrint(c *IntruccionPrintContext)
 
-	// ExitInstCasteos is called when exiting the instCasteos production.
-	ExitInstCasteos(c *InstCasteosContext)
+	// ExitInst_Casteos is called when exiting the Inst_Casteos production.
+	ExitInst_Casteos(c *Inst_CasteosContext)
 
 	// ExitListaExpresiones is called when exiting the ListaExpresiones production.
 	ExitListaExpresiones(c *ListaExpresionesContext)

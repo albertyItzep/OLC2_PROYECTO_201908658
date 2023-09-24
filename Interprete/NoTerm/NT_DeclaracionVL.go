@@ -29,7 +29,7 @@ func (ntVar *NT_Variables) Interpretar(ctx *interprete.Contexto) *interprete.Res
 		expr = ntVar.expresion.Interpretar(ctx)
 		res, resString := ctx.AgregarVariable(ntVar.Id, ntVar.Tipo, interprete.Nativo, -1, nil, expr, nil, ntVar.linea, ntVar.columna)
 		if !res {
-			ctx.AddError(resString)
+			ctx.AddError(resString, ntVar.linea, ntVar.columna)
 			return interprete.NewNil()
 		}
 	}
@@ -57,7 +57,7 @@ func (ntVarTipo NT_VariablesTipo) Interpretar(ctx *interprete.Contexto) *interpr
 	var expr = interprete.NewNil()
 	res, resString := ctx.AgregarVariableTipo(ntVarTipo.Id, ntVarTipo.Tipo, interprete.Nativo, -1, nil, expr, nil, ntVarTipo.linea, ntVarTipo.columna)
 	if !res {
-		ctx.AddError(resString)
+		ctx.AddError(resString, ntVarTipo.linea, ntVarTipo.columna)
 		return interprete.NewNil()
 	}
 	return interprete.NewNil()
@@ -86,7 +86,7 @@ func (ntVarExpresion *NT_VariableExpresion) Interpretar(ctx *interprete.Contexto
 		expr = ntVarExpresion.Expresion.Interpretar(ctx)
 		res, resString := ctx.AgregarVariable(ntVarExpresion.Id, expr.Tipo, interprete.Nativo, -1, nil, expr, nil, ntVarExpresion.linea, ntVarExpresion.columna)
 		if !res {
-			ctx.AddError(resString)
+			ctx.AddError(resString, ntVarExpresion.linea, ntVarExpresion.columna)
 			return interprete.NewNil()
 		}
 	}

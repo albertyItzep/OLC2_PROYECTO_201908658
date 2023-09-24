@@ -32,8 +32,8 @@ type Symbol struct {
 	ListaParametros  []Symbol
 	Resultado        *Resultado
 	Resultados       []Resultado
-	linea            int
-	columna          int
+	Linea            int
+	Columna          int
 }
 
 func NewSymbol(nombre string, tipo TipoD, tipoCompuesto TipoCompuesto, NumPar int, ListaPar []Symbol, Resultado *Resultado, Resultados []Resultado, linea int, columna int) *Symbol {
@@ -45,8 +45,8 @@ func NewSymbol(nombre string, tipo TipoD, tipoCompuesto TipoCompuesto, NumPar in
 		ListaParametros:  ListaPar,
 		Resultado:        Resultado,
 		Resultados:       Resultados,
-		linea:            linea,
-		columna:          columna,
+		Linea:            linea,
+		Columna:          columna,
 	}
 }
 
@@ -60,8 +60,8 @@ func NewSymbolConst(constante bool, nombre string, tipo TipoD, tipoCompuesto Tip
 		ListaParametros:  ListaPar,
 		Resultado:        Resultado,
 		Resultados:       Resultados,
-		linea:            linea,
-		columna:          columna,
+		Linea:            linea,
+		Columna:          columna,
 	}
 }
 
@@ -76,7 +76,7 @@ func NewSymbolVector(constante bool, nombre string, tipo TipoD, tipoVector TipoD
 		ListaParametros:  ListaPar,
 		Resultado:        Resultado,
 		Resultados:       Resultados,
-		linea:            linea,
-		columna:          columna,
+		Linea:            linea,
+		Columna:          columna,
 	}
 }

@@ -8,7 +8,8 @@ type Contexto struct {
 	Memoria   *Memoria
 	numeroRef int
 	Consola   string
-	Errores   []string
+	Errores   []Errs
+	Compuest  map[string]DataCompuest
 	Conversor *Conversor
 }
 
@@ -16,7 +17,8 @@ func NewContexto() *Contexto {
 	c := &Contexto{
 		Memoria:   NewMemoria(nil),
 		Consola:   "",
-		Errores:   make([]string, 0),
+		Errores:   make([]Errs, 0),
+		Compuest:  make(map[string]DataCompuest),
 		Conversor: nil,
 	}
 	c.Conversor = NewConversor(c)
@@ -31,8 +33,8 @@ func (c *Contexto) Println(entrada string) {
 	c.Consola += entrada + "\n"
 }
 
-func (c *Contexto) AddError(entrada string) {
-	c.Errores = append(c.Errores, entrada)
+func (c *Contexto) AddError(entrada string, linea int, columna int) {
+	c.Errores = append(c.Errores, Errs{entrada, linea, columna})
 }
 
 // funciones correspondientes a la memoria
@@ -84,9 +86,16 @@ func (c *Contexto) AgregarConstanteExpresion(nombre string, tipo TipoD, tipoComp
 	}
 	return c.Memoria.CreateSimbolConstExp(nombre, tipo, tipoCompuesto, NumPar, ListaPar, Resultado, Resultados, linea, columna)
 }
+func (c *Contexto) AgregarConstanteVector(nombre string, tipo TipoD, tipoVector TipoD, tipoCompuesto TipoCompuesto, NumPar int, ListaPar []Symbol, Resultado *Resultado, Resultados []Resultado, linea int, columna int) (bool, string) {
+	existe := c.Memoria.Exist(nombre)
+	if existe {
+		return false, "Error variable" + nombre + " declarada nuevamente"
+	}
+	return c.Memoria.CreateSimbolVector(true, nombre, tipo, tipoVector, tipoCompuesto, NumPar, ListaPar, Resultado, Resultados, linea, columna)
+}
 
 // solo agregamos valores para nativos int,float,char,string
-func (c *Contexto) ReasignarValorNativo(nombre string, res *Resultado) bool {
+func (c *Contexto) ReasignarValorNativo(nombre string, res *Resultado, linea int, columna int) bool {
 	existe := c.Memoria.Exist(nombre)
 	if !existe {
 		var aux_Memoria = c.Memoria.Anterior
@@ -97,7 +106,7 @@ func (c *Contexto) ReasignarValorNativo(nombre string, res *Resultado) bool {
 				if tmp {
 					return true
 				} else {
-					c.AddError(statRes)
+					c.AddError(statRes, linea, columna)
 					return false
 				}
 			}
@@ -108,7 +117,7 @@ func (c *Contexto) ReasignarValorNativo(nombre string, res *Resultado) bool {
 					if tmp {
 						return true
 					} else {
-						c.AddError(statRes)
+						c.AddError(statRes, linea, columna)
 						return false
 					}
 				}
@@ -119,12 +128,12 @@ func (c *Contexto) ReasignarValorNativo(nombre string, res *Resultado) bool {
 	if tmp {
 		return true
 	} else {
-		c.AddError(statRes)
+		c.AddError(statRes, linea, columna)
 		return false
 	}
 }
 
-func (c *Contexto) ReasignarValorNativoFor(nombre string, res *Resultado) bool {
+func (c *Contexto) ReasignarValorNativoFor(nombre string, res *Resultado, linea int, columna int) bool {
 	existe := c.Memoria.Exist(nombre)
 	if !existe {
 		var aux_Memoria = c.Memoria.Anterior
@@ -135,7 +144,7 @@ func (c *Contexto) ReasignarValorNativoFor(nombre string, res *Resultado) bool {
 				if tmp {
 					return true
 				} else {
-					c.AddError(statRes)
+					c.AddError(statRes, linea, columna)
 					return false
 				}
 			}
@@ -146,7 +155,7 @@ func (c *Contexto) ReasignarValorNativoFor(nombre string, res *Resultado) bool {
 					if tmp {
 						return true
 					} else {
-						c.AddError(statRes)
+						c.AddError(statRes, linea, columna)
 						return false
 					}
 				}
@@ -157,7 +166,7 @@ func (c *Contexto) ReasignarValorNativoFor(nombre string, res *Resultado) bool {
 	if tmp {
 		return true
 	} else {
-		c.AddError(statRes)
+		c.AddError(statRes, linea, columna)
 		return false
 	}
 }
@@ -183,6 +192,48 @@ func (c *Contexto) GetValorNativo(nombre string) (bool, *Resultado, bool) {
 	return c.Memoria.GetSimbolo(nombre)
 }
 
+func (c *Contexto) GetValor(nombre string) (bool, TipoD, *Resultado, []Resultado, bool) {
+	existe := c.Memoria.Exist(nombre)
+	if !existe {
+		var aux_Memoria = c.Memoria.Anterior
+		for aux_Memoria != nil {
+			existe = aux_Memoria.Exist(nombre)
+			if existe == true {
+				tipo := c.Memoria.GetSimboloTipoD(nombre)
+				if tipo != Vector {
+					tmp1, tmp2, tmp3 := c.Memoria.GetSimbolo(nombre)
+					return tmp1, tipo, tmp2, nil, tmp3
+				} else {
+					tmp1, tmpT, tmp3, tmp4 := c.Memoria.GetSimboloVector(nombre)
+					return tmp1, tmpT, nil, tmp3, tmp4
+				}
+			}
+			aux_Memoria = aux_Memoria.Anterior
+			if aux_Memoria.Anterior == nil {
+				if aux_Memoria.Exist(nombre) {
+					tipo := c.Memoria.GetSimboloTipoD(nombre)
+					if tipo != Vector {
+						tmp1, tmp2, tmp3 := c.Memoria.GetSimbolo(nombre)
+						return tmp1, tipo, tmp2, nil, tmp3
+					} else {
+						tmp1, tmpT, tmp3, tmp4 := c.Memoria.GetSimboloVector(nombre)
+						return tmp1, tmpT, nil, tmp3, tmp4
+					}
+				}
+			}
+		}
+		return false, Nil, nil, nil, false
+	}
+	tipo := c.Memoria.GetSimboloTipoD(nombre)
+	if tipo != Vector {
+		tmp1, tmp2, tmp3 := c.Memoria.GetSimbolo(nombre)
+		return tmp1, tipo, tmp2, nil, tmp3
+	} else {
+		tmp1, tmpT, tmp3, tmp4 := c.Memoria.GetSimboloVector(nombre)
+		return tmp1, tmpT, nil, tmp3, tmp4
+	}
+}
+
 func (c *Contexto) GetValorVector(nombre string) (bool, TipoD, []Resultado, bool) {
 	existe := c.Memoria.Exist(nombre)
 	if !existe {
@@ -204,7 +255,7 @@ func (c *Contexto) GetValorVector(nombre string) (bool, TipoD, []Resultado, bool
 	return c.Memoria.GetSimboloVector(nombre)
 }
 
-func (c *Contexto) ReasignarValorVector(nombre string, res []Resultado) bool {
+func (c *Contexto) ReasignarValorVector(nombre string, res []Resultado, linea int, columna int) bool {
 	existe := c.Memoria.Exist(nombre)
 	if !existe {
 		var aux_Memoria = c.Memoria.Anterior
@@ -215,7 +266,7 @@ func (c *Contexto) ReasignarValorVector(nombre string, res []Resultado) bool {
 				if tmp {
 					return true
 				} else {
-					c.AddError(statRes)
+					c.AddError(statRes, linea, columna)
 					return false
 				}
 			}
@@ -226,7 +277,7 @@ func (c *Contexto) ReasignarValorVector(nombre string, res []Resultado) bool {
 					if tmp {
 						return true
 					} else {
-						c.AddError(statRes)
+						c.AddError(statRes, linea, columna)
 						return false
 					}
 				}
@@ -237,7 +288,7 @@ func (c *Contexto) ReasignarValorVector(nombre string, res []Resultado) bool {
 	if tmp {
 		return true
 	} else {
-		c.AddError(statRes)
+		c.AddError(statRes, linea, columna)
 		return false
 	}
 }

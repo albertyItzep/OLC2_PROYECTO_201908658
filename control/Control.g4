@@ -91,10 +91,11 @@ instReturn
 decVector
     : 'var' ID (':' '[' (tipovariable|ID) ']')? '=' '[' expresionList* ']' #DecVector_ExpresionLista
     | 'var' ID (':' '[' (tipovariable|ID) ']')? '=' '[' objectsList ']'    #DecVector_ObjetLista
-    | 'var' ID (':' '[' (tipovariable|ID) ']')? '=' ID                     #DecVector_Id
+    | 'var' ID (':' '[' (tipovariable|ID) ']') '=' ID                     #DecVector_Id
+    | 'var' ID (':' '[' (tipovariable|ID) ']') '='  '['']'                 #DecVector_ValCor
     | 'let' ID (':' '[' (tipovariable|ID) ']')? '=' '[' expresionList* ']'    #DecVectorConst_ExpresionLista
     | 'let' ID (':' '[' (tipovariable|ID) ']')? '='  '[' objectsList ']'      #DecVectorConst_ObjetLista
-    | 'let' ID (':' '[' (tipovariable|ID) ']')? '='  ID                       #DecVectorConst_Id
+    | 'let' ID (':' '[' (tipovariable|ID) ']') '='  ID                       #DecVectorConst_Id
     ;
 
 funcsVectoriales
@@ -168,12 +169,11 @@ llamadaMetodos
 
 //funciones
 decFunciones
-    : 'func' ID '(' listaParametros? ')' ('->' (tipovariable|ID))? '{' block '}'
+    : 'func' ID '(' listaParametros* ')' ('->' (tipovariable|ID))? '{' block '}'  #Dec_Funcion
     ;
 
 listaParametros
-    : listaParametros ',' (ID| '_')? ID ':' 'inout'? (tipovariable | '[' tipovariable ']' | ID)
-    | (ID| '_')? ID ':' 'inout'? (tipovariable |  '[' tipovariable ']' | ID)
+    : ','? (ID| '_')? ID ':' 'inout'? (tipovariable | '[' tipovariable ']' | ID)
     ;
 
 
@@ -193,7 +193,7 @@ instPrint
     ;
 
 instCasteos
-    : tipovariable '(' expr ')'
+    : tipovariable '(' expr ')' #Inst_Casteos
     ;
 
 expresionList

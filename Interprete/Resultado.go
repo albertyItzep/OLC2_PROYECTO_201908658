@@ -55,6 +55,7 @@ type Resultado struct {
 	TipoVector   TipoD
 	TipoVariable bool
 	Rango        []int
+	Vector       []Resultado
 	Return       bool
 }
 
@@ -79,6 +80,7 @@ func NewNil() *Resultado {
 		TipoVariable: false,
 		TipoVector:   Nil,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
 		Return:       false,
 	}
 }
@@ -95,6 +97,7 @@ func NewFloatLiteral(valor float64) *Resultado {
 		TipoVariable: false,
 		TipoVector:   Nil,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
 		Return:       false,
 	}
 }
@@ -109,6 +112,7 @@ func NewIntLiteral(valor int) *Resultado {
 		Tipo:         Integer,
 		TipoVector:   Nil,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
 		Nil:          false,
 		TipoVariable: false,
 	}
@@ -125,6 +129,7 @@ func NewStringLiteral(valor string) *Resultado {
 		TipoVector:   Nil,
 		Nil:          false,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
 		TipoVariable: false,
 		Return:       false,
 	}
@@ -141,6 +146,7 @@ func NewCharLiteral(valor string) *Resultado {
 		TipoVector:   Nil,
 		Nil:          false,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
 		TipoVariable: false,
 		Return:       false,
 	}
@@ -158,6 +164,7 @@ func NewBoolLiteral(valor bool) *Resultado {
 		Nil:          false,
 		TipoVariable: false,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
 		Return:       false,
 	}
 }
@@ -173,6 +180,7 @@ func NewBreakLiteral() *Resultado {
 		TipoVector:   Nil,
 		Nil:          false,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
 		TipoVariable: false,
 		Return:       false,
 	}
@@ -190,6 +198,7 @@ func NewContinueLiteral() *Resultado {
 		Nil:          false,
 		TipoVariable: false,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
 		Return:       false,
 	}
 }
@@ -206,6 +215,7 @@ func NewRangoLiteral() *Resultado {
 		Nil:          false,
 		TipoVariable: false,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
 		Return:       false,
 	}
 }
@@ -222,6 +232,23 @@ func NewVectorLiteral(Tipo TipoD) *Resultado {
 		Nil:          false,
 		TipoVariable: false,
 		Rango:        make([]int, 0),
+		Vector:       make([]Resultado, 0),
+		Return:       false,
+	}
+}
+func NewVectorValLiteral(Tipo TipoD, Resultados []Resultado) *Resultado {
+	return &Resultado{
+		Valor:        0,
+		ValorF:       0.0,
+		ValorS:       "",
+		ValorC:       "",
+		ValorB:       true,
+		Tipo:         Vector,
+		TipoVector:   Tipo,
+		Nil:          false,
+		TipoVariable: false,
+		Rango:        make([]int, 0),
+		Vector:       Resultados,
 		Return:       false,
 	}
 }

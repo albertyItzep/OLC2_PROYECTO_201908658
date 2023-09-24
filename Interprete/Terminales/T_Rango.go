@@ -25,7 +25,7 @@ func (tRango *T_Rango) Interpretar(ctx *interprete.Contexto) *interprete.Resulta
 	iniciaPos := tRango.posInicial.Interpretar(ctx)
 	finalPos := tRango.posFinal.Interpretar(ctx)
 	if iniciaPos.Tipo != interprete.Integer || finalPos.Tipo != interprete.Integer {
-		ctx.AddError("Error Rango: Tipos invalidos")
+		ctx.AddError("Error Rango: Tipos invalidos", tRango.linea, tRango.columna)
 	}
 	rango := interprete.NewRangoLiteral()
 

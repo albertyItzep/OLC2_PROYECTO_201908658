@@ -252,6 +252,12 @@ func (s *BaseControlListener) EnterDecVector_Id(ctx *DecVector_IdContext) {}
 // ExitDecVector_Id is called when production DecVector_Id is exited.
 func (s *BaseControlListener) ExitDecVector_Id(ctx *DecVector_IdContext) {}
 
+// EnterDecVector_ValCor is called when production DecVector_ValCor is entered.
+func (s *BaseControlListener) EnterDecVector_ValCor(ctx *DecVector_ValCorContext) {}
+
+// ExitDecVector_ValCor is called when production DecVector_ValCor is exited.
+func (s *BaseControlListener) ExitDecVector_ValCor(ctx *DecVector_ValCorContext) {}
+
 // EnterDecVectorConst_ExpresionLista is called when production DecVectorConst_ExpresionLista is entered.
 func (s *BaseControlListener) EnterDecVectorConst_ExpresionLista(ctx *DecVectorConst_ExpresionListaContext) {
 }
@@ -362,11 +368,11 @@ func (s *BaseControlListener) EnterLlamadaMetodos(ctx *LlamadaMetodosContext) {}
 // ExitLlamadaMetodos is called when production llamadaMetodos is exited.
 func (s *BaseControlListener) ExitLlamadaMetodos(ctx *LlamadaMetodosContext) {}
 
-// EnterDecFunciones is called when production decFunciones is entered.
-func (s *BaseControlListener) EnterDecFunciones(ctx *DecFuncionesContext) {}
+// EnterDec_Funcion is called when production Dec_Funcion is entered.
+func (s *BaseControlListener) EnterDec_Funcion(ctx *Dec_FuncionContext) {}
 
-// ExitDecFunciones is called when production decFunciones is exited.
-func (s *BaseControlListener) ExitDecFunciones(ctx *DecFuncionesContext) {}
+// ExitDec_Funcion is called when production Dec_Funcion is exited.
+func (s *BaseControlListener) ExitDec_Funcion(ctx *Dec_FuncionContext) {}
 
 // EnterListaParametros is called when production listaParametros is entered.
 func (s *BaseControlListener) EnterListaParametros(ctx *ListaParametrosContext) {}
@@ -392,11 +398,11 @@ func (s *BaseControlListener) EnterIntruccionPrint(ctx *IntruccionPrintContext) 
 // ExitIntruccionPrint is called when production IntruccionPrint is exited.
 func (s *BaseControlListener) ExitIntruccionPrint(ctx *IntruccionPrintContext) {}
 
-// EnterInstCasteos is called when production instCasteos is entered.
-func (s *BaseControlListener) EnterInstCasteos(ctx *InstCasteosContext) {}
+// EnterInst_Casteos is called when production Inst_Casteos is entered.
+func (s *BaseControlListener) EnterInst_Casteos(ctx *Inst_CasteosContext) {}
 
-// ExitInstCasteos is called when production instCasteos is exited.
-func (s *BaseControlListener) ExitInstCasteos(ctx *InstCasteosContext) {}
+// ExitInst_Casteos is called when production Inst_Casteos is exited.
+func (s *BaseControlListener) ExitInst_Casteos(ctx *Inst_CasteosContext) {}
 
 // EnterListaExpresiones is called when production ListaExpresiones is entered.
 func (s *BaseControlListener) EnterListaExpresiones(ctx *ListaExpresionesContext) {}

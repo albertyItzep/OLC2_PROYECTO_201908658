@@ -451,6 +451,18 @@ public interface ControlListener extends ParseTreeListener {
 	 */
 	void exitDecVector_Id(ControlParser.DecVector_IdContext ctx);
 	/**
+	 * Enter a parse tree produced by the {@code DecVector_ValCor}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void enterDecVector_ValCor(ControlParser.DecVector_ValCorContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code DecVector_ValCor}
+	 * labeled alternative in {@link ControlParser#decVector}.
+	 * @param ctx the parse tree
+	 */
+	void exitDecVector_ValCor(ControlParser.DecVector_ValCorContext ctx);
+	/**
 	 * Enter a parse tree produced by the {@code DecVectorConst_ExpresionLista}
 	 * labeled alternative in {@link ControlParser#decVector}.
 	 * @param ctx the parse tree
@@ -487,15 +499,41 @@ public interface ControlListener extends ParseTreeListener {
 	 */
 	void exitDecVectorConst_Id(ControlParser.DecVectorConst_IdContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#funcsVectoriales}.
+	 * Enter a parse tree produced by the {@code VectFunc_Append}
+	 * labeled alternative in {@link ControlParser#funcsVectoriales}.
 	 * @param ctx the parse tree
 	 */
-	void enterFuncsVectoriales(ControlParser.FuncsVectorialesContext ctx);
+	void enterVectFunc_Append(ControlParser.VectFunc_AppendContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#funcsVectoriales}.
+	 * Exit a parse tree produced by the {@code VectFunc_Append}
+	 * labeled alternative in {@link ControlParser#funcsVectoriales}.
 	 * @param ctx the parse tree
 	 */
-	void exitFuncsVectoriales(ControlParser.FuncsVectorialesContext ctx);
+	void exitVectFunc_Append(ControlParser.VectFunc_AppendContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code VectFunc_Remove}
+	 * labeled alternative in {@link ControlParser#funcsVectoriales}.
+	 * @param ctx the parse tree
+	 */
+	void enterVectFunc_Remove(ControlParser.VectFunc_RemoveContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code VectFunc_Remove}
+	 * labeled alternative in {@link ControlParser#funcsVectoriales}.
+	 * @param ctx the parse tree
+	 */
+	void exitVectFunc_Remove(ControlParser.VectFunc_RemoveContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code VectFunc_RemoveLast}
+	 * labeled alternative in {@link ControlParser#funcsVectoriales}.
+	 * @param ctx the parse tree
+	 */
+	void enterVectFunc_RemoveLast(ControlParser.VectFunc_RemoveLastContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code VectFunc_RemoveLast}
+	 * labeled alternative in {@link ControlParser#funcsVectoriales}.
+	 * @param ctx the parse tree
+	 */
+	void exitVectFunc_RemoveLast(ControlParser.VectFunc_RemoveLastContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ControlParser#decMatriz}.
 	 * @param ctx the parse tree
@@ -617,15 +655,17 @@ public interface ControlListener extends ParseTreeListener {
 	 */
 	void exitLlamadaMetodos(ControlParser.LlamadaMetodosContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#decFunciones}.
+	 * Enter a parse tree produced by the {@code Dec_Funcion}
+	 * labeled alternative in {@link ControlParser#decFunciones}.
 	 * @param ctx the parse tree
 	 */
-	void enterDecFunciones(ControlParser.DecFuncionesContext ctx);
+	void enterDec_Funcion(ControlParser.Dec_FuncionContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#decFunciones}.
+	 * Exit a parse tree produced by the {@code Dec_Funcion}
+	 * labeled alternative in {@link ControlParser#decFunciones}.
 	 * @param ctx the parse tree
 	 */
-	void exitDecFunciones(ControlParser.DecFuncionesContext ctx);
+	void exitDec_Funcion(ControlParser.Dec_FuncionContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link ControlParser#listaParametros}.
 	 * @param ctx the parse tree
@@ -669,15 +709,17 @@ public interface ControlListener extends ParseTreeListener {
 	 */
 	void exitIntruccionPrint(ControlParser.IntruccionPrintContext ctx);
 	/**
-	 * Enter a parse tree produced by {@link ControlParser#instCasteos}.
+	 * Enter a parse tree produced by the {@code Inst_Casteos}
+	 * labeled alternative in {@link ControlParser#instCasteos}.
 	 * @param ctx the parse tree
 	 */
-	void enterInstCasteos(ControlParser.InstCasteosContext ctx);
+	void enterInst_Casteos(ControlParser.Inst_CasteosContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link ControlParser#instCasteos}.
+	 * Exit a parse tree produced by the {@code Inst_Casteos}
+	 * labeled alternative in {@link ControlParser#instCasteos}.
 	 * @param ctx the parse tree
 	 */
-	void exitInstCasteos(ControlParser.InstCasteosContext ctx);
+	void exitInst_Casteos(ControlParser.Inst_CasteosContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code ListaExpresiones}
 	 * labeled alternative in {@link ControlParser#expresionList}.
@@ -1096,6 +1138,18 @@ public interface ControlListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitExpr_Conteo(ControlParser.Expr_ConteoContext ctx);
+	/**
+	 * Enter a parse tree produced by the {@code Expr_IsEmpty}
+	 * labeled alternative in {@link ControlParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void enterExpr_IsEmpty(ControlParser.Expr_IsEmptyContext ctx);
+	/**
+	 * Exit a parse tree produced by the {@code Expr_IsEmpty}
+	 * labeled alternative in {@link ControlParser#expr}.
+	 * @param ctx the parse tree
+	 */
+	void exitExpr_IsEmpty(ControlParser.Expr_IsEmptyContext ctx);
 	/**
 	 * Enter a parse tree produced by the {@code Expr_OpSumRes}
 	 * labeled alternative in {@link ControlParser#expr}.

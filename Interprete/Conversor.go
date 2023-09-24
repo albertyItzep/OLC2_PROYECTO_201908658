@@ -15,26 +15,26 @@ func NewConversor(ctx *Contexto) *Conversor {
 	}
 }
 
-func (c *Conversor) Ampliar(res *Resultado, tipo TipoD) *Resultado {
+func (c *Conversor) Ampliar(res *Resultado, tipo TipoD, linea int, columna int) *Resultado {
 	switch tipo {
 	case Nil:
-		c.ctx.AddError("No se puede realizar conversiones a Nil")
+		c.ctx.AddError("No se puede realizar conversiones a Nil", linea, columna)
 	case Bool:
 
 	case Integer:
 		switch res.Tipo {
 		case Nil:
-			c.ctx.AddError("No se puede realizar conversiones a Nil")
+			c.ctx.AddError("No se puede realizar conversiones a Nil", linea, columna)
 			return NewNil()
 		case Bool:
-			c.ctx.AddError("No se puede realizar conversion de Bool a Int")
+			c.ctx.AddError("No se puede realizar conversion de Bool a Int", linea, columna)
 			return NewNil()
 		case Integer:
 			return res
 		case String:
 			tmp, err := strconv.Atoi(res.ValorS)
 			if err != nil {
-				c.ctx.AddError("Error al realizar la conversion de cadena: " + res.ValorS + " a string")
+				c.ctx.AddError("Error al realizar la conversion de cadena: "+res.ValorS+" a string", linea, columna)
 				return NewNil()
 			}
 			res.Valor = tmp
@@ -42,7 +42,7 @@ func (c *Conversor) Ampliar(res *Resultado, tipo TipoD) *Resultado {
 			res.ValorS = ""
 			return res
 		case Character:
-			c.ctx.AddError("No se puede realizar la conversion de Character a Integer")
+			c.ctx.AddError("No se puede realizar la conversion de Character a Integer", linea, columna)
 			return NewNil()
 		case Float:
 			res.Valor = int(res.ValorF)
@@ -53,7 +53,7 @@ func (c *Conversor) Ampliar(res *Resultado, tipo TipoD) *Resultado {
 	case String:
 		switch res.Tipo {
 		case Nil:
-			c.ctx.AddError("No se puede realizar la conversion de Nil a String")
+			c.ctx.AddError("No se puede realizar la conversion de Nil a String", linea, columna)
 			return NewNil()
 		case Bool:
 			if res.ValorB {
@@ -85,10 +85,10 @@ func (c *Conversor) Ampliar(res *Resultado, tipo TipoD) *Resultado {
 	case Float:
 		switch res.Tipo {
 		case Nil:
-			c.ctx.AddError("No se puede realizar la conversion de Nil a Float")
+			c.ctx.AddError("No se puede realizar la conversion de Nil a Float", linea, columna)
 			return NewNil()
 		case Bool:
-			c.ctx.AddError("No se puede realizar la conversion de bool a Float")
+			c.ctx.AddError("No se puede realizar la conversion de bool a Float", linea, columna)
 			return NewNil()
 		case Integer:
 			res.ValorF = float64(res.Valor)
@@ -98,7 +98,7 @@ func (c *Conversor) Ampliar(res *Resultado, tipo TipoD) *Resultado {
 		case String:
 			tmpFloat, tmp := strconv.ParseFloat(res.ValorS, 64)
 			if tmp != nil {
-				c.ctx.AddError("Error Parseo: No se pudo realizar el casteo de string a float")
+				c.ctx.AddError("Error Parseo: No se pudo realizar el casteo de string a float", linea, columna)
 				return NewNil()
 			}
 			res.ValorF = tmpFloat
@@ -106,14 +106,14 @@ func (c *Conversor) Ampliar(res *Resultado, tipo TipoD) *Resultado {
 			res.ValorS = ""
 			return res
 		case Character:
-			c.ctx.AddError("No se puede realizar la conversion de character a Float")
+			c.ctx.AddError("No se puede realizar la conversion de character a Float", linea, columna)
 			return NewNil()
 		case Float:
 			return res
 		}
 	}
-	c.ctx.AddError("Conversion ilegal" +
-		tipo.String() + " y" + res.Tipo.String())
+	c.ctx.AddError("Conversion ilegal"+
+		tipo.String()+" y"+res.Tipo.String(), linea, columna)
 	return NewNil()
 }
 
